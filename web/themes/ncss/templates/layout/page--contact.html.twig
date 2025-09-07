@@ -1,0 +1,107 @@
+
+   {% include '@ncss/layout/header.html.twig' %}
+
+{% if lang=='ar' %}
+ {{ attach_library('ncss/rightCSS') }}
+{% endif %}
+    <main id="contant-us" class="bg-light">
+        <div class="bg-primary bg-opacity-10">
+            <div class="container">
+                <nav id="breadcrumb" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">{{ 'Home'|t }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ 'Page Name'|t }}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="container">
+                <h1 class="page-heading">{{ 'Contact Us'|t }}</h1>
+                <p class="page-description pb-5">{{ 'We are happy to hear from you to answer your inquiries, receive your suggestions and comments, or provide support regarding our services and research activities. Our team is ready to respond and assist through various communication channels. We believe that constructive communication with individuals and entities is a fundamental step towards enhancing community knowledge and achieving national impact.'|t }}</p>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-sm-6 col-md-9">
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body">
+                          {{ page.content }}
+                        </div>
+
+                        </div>
+                    </div>
+                 </div>
+                <div class="col">
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="fw-bold mb-0">{{ 'Mobile Number'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">9200343222</a>
+                            </div>
+                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="9200343222" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                        </div>
+                    </div>
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="fw-bold mb-0">{{ 'SMS'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">199099</a>
+                            </div>
+                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="199099" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                        </div>
+                    </div>
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="fw-bold mb-0">{{ 'Fax'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">00966-11-434-6654</a>
+                            </div>
+                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="00966-11-434-6654" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                        </div>
+                    </div>
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="fw-bold mb-0">{{ 'Location'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ 'Riyadh - Kingdom of Saudi Arabia'|t }}</a>
+                            </div>
+                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ 'Riyadh - Kingdom of Saudi Arabia'|t }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/link-04.svg" alt="copy-01"></div>
+                        </div>
+                    </div>
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="fw-bold mb-0">{{ 'Follow us on'|t }}</p>
+                                <div class="d-flex gap-1 justify-content-between align-items-center"><a href="#" class="link-underline link-underline-opacity-0"><img src="{{ base_path ~ directory }}/frontend/img/instagram1.svg" alt="instagram1"> </a><a href="#" class="link-underline link-underline-opacity-0"><img src="{{ base_path ~ directory }}/frontend/img/linkedin-01.svg" alt="linkedin"> </a><a href="#" class="link-underline link-underline-opacity-0"><img src="{{ base_path ~ directory }}/frontend/img/new-twitter-rectangle.svg" alt="twitter"></a></div>
+                            </div>
+                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="#" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                        </div>
+                    </div>
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body">
+                            <div>
+                                <p class="fw-bold mb-0">{{ 'Emergency Contacts'|t }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="flex-grow-1 d-flex gap-2">
+                                        <p class="fw-bold mb-0">{{ 'Civil Defense'|t }}</p><a href="tel:988" class="link-underline link-underline-opacity-0">988</a>
+                                    </div>
+                                    <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="9200343222" style="width: 35px; height: 35px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" style="width: 20px; height: 20px" alt="copy-01"></div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="flex-grow-1 d-flex gap-2">
+                                        <p class="fw-bold mb-0">{{ 'Ambulance'|t }}</p><a href="tel:988" class="link-underline link-underline-opacity-0">988</a>
+                                    </div>
+                                    <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="9200343222" style="width: 35px; height: 35px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" style="width: 20px; height: 20px" alt="copy-01"></div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="flex-grow-1 d-flex gap-2">
+                                        <p class="fw-bold mb-0">{{ 'Police'|t }}</p><a href="tel:988" class="link-underline link-underline-opacity-0">988</a>
+                                    </div>
+                                    <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="9200343222" style="width: 35px; height: 35px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" style="width: 20px; height: 20px" alt="copy-01"></div>
+                                </div><a href="#" class="link-underline link-underline-opacity-0 mt-3">{{ 'Show more'|t }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     </main>
+
+
+   {% include '@ncss/layout/footer.html.twig' %}

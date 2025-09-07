@@ -1,0 +1,47 @@
+{% include '@ncss/layout/header.html.twig' %}
+
+<main>
+
+
+  <!-- breadcrumb-area -->
+  <section class="breadcrumb-area d-flex align-items-center" style="background-image:url({{ base_path ~ directory }}/assets/img/bg/bdrc-bg.jpg);">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xl-12 col-lg-12">
+          <div class="breadcrumb-wrap text-center">
+            <div class="breadcrumb-title">
+              <h1> {{ "Confirm Reservation"|t }}</h1>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb-area-end -->
+  <!-- contact-area -->
+  <section id="contact" class="contact-area after-none contact-bg pt-120 pb-120 p-relative fix">
+    <div class="container">
+
+      <div class="row justify-content-center align-items-center">
+
+        <div class="col-lg-12 order-2">
+          <div class=" ">
+
+            {{ page.content }}
+            {{ content }}
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- contact-area-end -->
+
+</main>
+
+{% include '@ncss/layout/footer.html.twig' %}

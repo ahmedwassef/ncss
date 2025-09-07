@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container flex-column">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <div class="right">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="{{ base_path ~ directory }}/frontend/img/logo.svg" alt="ncss">
+        </a>
+      </div>
+      <div class="left">
+        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-target="#search-modal"><img
+            src="{{ base_path ~ directory }}/frontend/img/search.svg" alt="search"> </a>
+        {% if lang == 'en' %}
+          <a class="btn btn-link px-2 text-dark" href="{{ lang_url }}">العربية</a>
+        {% else %}
+          <a class="btn btn-link px-2 text-dark" href="{{ lang_url }}">English</a>
+        {% endif %}
+        <a class="btn btn-primary" href="/user/login"><img src="{{ base_path ~ directory }}/frontend/img/user.svg" class="me-2" alt="Login"> {{ 'Login'|t }}</a></div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center w-100">
+      <div class="collapse navbar-collapse mt-3 w-100" id="navbarTogglerDemo01">
+
+        {% if page.header.ncss_mainnavigation %}
+          {{ page.header.ncss_mainnavigation }}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body">
+        <form action="#" class="w-100"><input type="text" class="form-control form-control-lg"
+                                              placeholder="{{ 'Search'|t }}"
+                                              aria-label="{{ 'Search'|t }}" autofocus aria-describedby="button-addon2">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

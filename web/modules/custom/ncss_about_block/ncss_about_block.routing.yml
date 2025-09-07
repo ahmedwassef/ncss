@@ -1,0 +1,8 @@
+ncss_about_block.config_form:
+  path: '/admin/config/ncss/about'
+  defaults:
+    _form: '\Drupal\ncss_about_block\Form\NcssAboutConfigForm'
+    _title: 'About Section Settings'
+  requirements:
+    _permission: 'administer site configuration'
+

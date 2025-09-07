@@ -1,0 +1,118 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A CSS-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   JavaScript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A CSS-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   JavaScript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+<!-- breadcrumb-area -->
+
+
+<div class="container">
+  <h1 class="page-heading">من قلب الحدث: أخبار وفعاليات  المركز</h1>
+  <p class="page-description pb-5">
+    ابقَ على اطلاع دائم بأحدث الأخبار، الفعاليات، والإعلانات الرسمية من المركز الوطني
+    للدراسات والبحوث الاجتماعية. ننقل لك كل ما يدور خلف الكواليس من دراسات جديدة، شراكات مثمرة، ومبادرات وطنية تُحدث
+    الأثر وتُعبّر عن نبض المجتمع السعودي. تابع المستجدات أولاً بأول وكن جزءًا من الحراك المعرفي والاجتماعي
+    المتجدد.
+  </p>
+</div>
+<div class="container my-5">
+  <div class="d-flex flex-column gap-3 mb-3 flex-md-row justify-content-between align-items-center">
+    <nav>
+      <div class="nav nav-pills" id="nav-tab" role="tablist">
+
+        <a disabled class="nav-link active" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+           role="tab" aria-controls="nav-contact" aria-selected="false">{{"News"|t}}
+        </a>
+
+        <a class="nav-link"   href="{{ path('view.events.page') }}" >
+          {{"Events"|t}}
+        </a>
+
+        <a  class="nav-link " href="{{ path('view.gallery.page') }}" aria-selected="false">
+          {{"Gallery"|t}}
+        </a>
+
+      </div>
+    </nav>
+    <div class="d-flex gap-3" style="max-width: 300px;">
+        {{ exposed }}
+    </div>
+{#        <input type="text" class="form-control bg-light border-0" placeholder="البحث" aria-label="search">#}
+{#      <button class="btn btn-light" type="button"><i class="hgi hgi-stroke hgi-list-setting"></i></button>#}
+  </div>
+  <div class="row">
+    {% if rows -%}
+      {{ rows }}
+    {% endif %}
+
+  </div>
+</div>
+
+
+
+
+
+

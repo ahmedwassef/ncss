@@ -1,0 +1,35 @@
+{% include '@ncss/layout/header.html.twig' %}
+
+<div class="auth-layout container-fluid d-flex two-column">
+  <a class="back-btn" href="/">
+    <img src="/themes/ncss/frontend/img/arrow-left-02.svg" class="rtl-rotate" alt="{{ "Left arrow"|t }}">
+  </a>
+
+  <div class="container-fluid ">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="card border-0">
+        <div class="card-body  mw-100" style="width: 900px;">
+          <div class="text-center">
+            <h1 class="title">{{ "Login to your account"|t }}</h1>
+
+            <p class="description mw-100 mx-auto" style="width: 450px;">{{ "Sign in to access the center's services, follow studies, and easily participate in events and research initiatives."|t }}</p>
+          </div>
+          {{ page.content }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="text-center" style="width: 400px;">
+      <img src="/themes/ncss/frontend/img/nafaz.svg" width="100" height="100" alt="{{ "Nafaz"|t }}">
+      <p class="title">{{ "Unified National Access"|t }}</p>
+      <p class="description text-danger">{{ "Users within the Kingdom of Saudi Arabia are requested to log in for the first time through the National Access Platform"|t }}</p>
+      <a href="#" class="btn btn-primary w-100 btn-lg">
+        {{ "Login to Nafaz platform"|t }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% include '@ncss/layout/footer.html.twig' %}

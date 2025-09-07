@@ -1,0 +1,28 @@
+{% block paragraph %}
+  {% block content %}
+    <div class="vertical-tabs-container">
+      {% if content.field_section %}
+        {% for key, item in content.field_section %}
+          {% if key|first != '#' %}
+            {% set paragraph_item = item['#paragraph'] %}
+            <div class="container">
+              <div class="who-we-are-section">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="who-we-are-section-number"> {{key+1 }}</span>
+                  {% if paragraph_item.field_title.value %}
+                    <span class="who-we-are-section-title">{{ paragraph_item.field_title.value }}</span>
+                  {% endif %}
+                </div>
+                {% if paragraph_item.field_body.value %}
+                  <p class="who-we-are-section-description">{{ paragraph_item.field_body.value|striptags|raw }}</p>
+                {% else %}
+                  {{ item }}
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endblock %}
+{% endblock paragraph %}

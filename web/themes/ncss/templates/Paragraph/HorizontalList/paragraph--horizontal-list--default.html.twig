@@ -1,0 +1,34 @@
+{% block paragraph %}
+  {% block content %}
+
+    <div class="bg-light p-5 gap-y-4 ">
+      {% if content.field_list %}
+
+      <div class="container">
+        <div class="row">
+        {% for key, item in content.field_list %}
+          {% if key|first != '#' %}
+            {% set paragraph_item = item['#paragraph'] %}
+          <div class="col-12 col-md-6 col-xl-3 mb-3 who-we-are-values-grid">
+            <div class="who-we-are-values">	<span class="who-we-are-values-number">
+            {{ paragraph_item.field_number.value }}
+              </span>
+              <span class="who-we-are-values-title">{{ paragraph_item.field_title.value }}</span>
+
+              <p class="who-we-are-values-description">
+                {{ paragraph_item.field_subtitle.value|striptags|raw }}
+              </p>
+            </div>
+          </div>
+
+          {% endif %}
+        {% endfor %}
+
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+
+  {% endblock %}
+{% endblock paragraph %}

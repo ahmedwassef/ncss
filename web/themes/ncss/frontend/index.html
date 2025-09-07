@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NCSS Frontend</title>
+  <link rel="stylesheet" href="css/style.css"><!-- favicon -->
+  <link rel="icon" href="img/logo.svg"><!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet"><!-- Swiper slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"><!-- icons -->
+  <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container flex-column">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <div class="right">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+        <a class="navbar-brand" href="/"><img src="/img/logo.svg" alt="ncss"></a></div>
+      <div class="left"><a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-target="#search-modal"><img
+        src="img/search.svg" alt=""> </a><a class="btn btn-link link-underline link-underline-opacity-0 link-dark"
+                                            href="#">EN </a><a class="btn btn-primary" href="/login.html"><img
+        src="img/user.svg" class="me-2" alt=""> تسجيل الدخول</a></div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center w-100">
+      <div class="collapse navbar-collapse mt-3 w-100" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
+                                           data-bs-toggle="dropdown" aria-expanded="false">نبـذة عن المركـز</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/who-we-are.html">عن المركز</a></li>
+              <li><a class="dropdown-item" href="/policies.html">السياسات والاستراتيجيات</a></li>
+              <li><a class="dropdown-item" href="/board.html">مجلس الإدارة</a></li>
+              <li><a class="dropdown-item" href="/board-structure.html">الهيكل التنظيمي</a></li>
+              <li><a class="dropdown-item" href="/contact-us.html">تواصل معنا</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/services.html">الخدمـات</a></li>
+          <li class="nav-item"><a class="nav-link" href="/tanseeky-board.html">المجـلس التنسيقي</a></li>
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
+                                           data-bs-toggle="dropdown" aria-expanded="false">المركـز الإعلامي</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/news.html">الأخبار والفعاليات</a></li>
+              <li><a class="dropdown-item" href="/">الدرسات والبحوث</a></li>
+              <li><a class="dropdown-item" href="/workshops.html">الورش التدريبية</a></li>
+              <li><a class="dropdown-item" href="/gallery.html">المعرض</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/mobadarat.html">مبادرات المركـز</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body">
+        <form action="#" class="w-100"><input type="text" class="form-control form-control-lg" placeholder="Search"
+                                              aria-label="Search" autofocus aria-describedby="button-addon2"></form>
+      </div>
+    </div>
+  </div>
+</div>
+<main id="home">
+  <div class="video-wrapper">
+    <video autoplay muted loop src="/video/test.mp4" type="video/mp4" class="w-100 object-fit-cover"
+           style="height: 450px;" onclick="this.paused ? this.play() : this.pause()"></video>
+  </div>
+  <div id="hero" class="index text-white">
+    <div class="swiper hero-slider">
+      <div class="swiper-wrapper"><!-- Slide 1 -->
+        <div class="swiper-slide" style="background-image: url(img/klik.jpg);">
+          <div class="container">
+            <div class="hero-content mw-100" style="width: 500px;"><h1 class="title">المركـز الوطنـي للدراسات والبحـوث
+              الاجتماعيـة</h1>
+              <p class="description">قيادة البحث الاجتماعي لتمكين السياسات وإثراء المجتمعات وبناء مستقبل مرن.</p><a
+                href="#" class="btn btn-primary"><img src="img/forward-01.svg" class="me-2" width="19" height="19"
+                                                      alt="forward-01">عن المركز</a></div>
+          </div>
+        </div><!-- Slide 2 -->
+        <div class="swiper-slide" style="background-image: url(img/IMG_0607.jpg);">
+          <div class="container">
+            <div class="hero-content mw-100" style="width: 500px;"><h1 class="title">البحث العلمي المتقدم</h1>
+              <p class="description">نقوم بإجراء دراسات وبحوث متقدمة لتطوير السياسات الاجتماعية وتحسين جودة الحياة.</p>
+              <a href="#" class="btn btn-primary"><img src="img/forward-01.svg" class="me-2" width="19" height="19"
+                                                       alt="forward-01"> استكشف البحوث</a></div>
+          </div>
+        </div><!-- Slide 3 -->
+        <div class="swiper-slide" style="background-image: url(img/IMG_3605.jpg);">
+          <div class="container">
+            <div class="hero-content mw-100" style="width: 500px;"><h1 class="title">تمكين المجتمعات</h1>
+              <p class="description">نساهم في بناء مجتمعات قوية ومستقرة من خلال الدراسات الاجتماعية المتخصصة.</p><a
+                href="#" class="btn btn-primary"><img src="img/forward-01.svg" class="me-2" width="19" height="19"
+                                                      alt="forward-01">خدماتنا</a></div>
+          </div>
+        </div><!-- Slide 4 -->
+        <div class="swiper-slide" style="background-image: url(img/IMG_0755.jpg);">
+          <div class="container">
+            <div class="hero-content mw-100" style="width: 500px;"><h1 class="title">الابتكار في البحث الاجتماعي</h1>
+              <p class="description">نستخدم أحدث التقنيات والمنهجيات لتطوير حلول مبتكرة للتحديات الاجتماعية.</p><a
+                href="#" class="btn btn-primary"><img src="img/forward-01.svg" class="me-2" width="19" height="19"
+                                                      alt="forward-01">تعرف علينا</a></div>
+          </div>
+        </div>
+      </div><!-- Navigation -->
+      <div class="swiper-button-next">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 9L7.5 6L4.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="swiper-button-prev">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.5 9L4.5 6L7.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div><!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  <section id="home-about">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row align-items-center gap-5"><img src="img/home-about.jpg"
+                                                                                class="img-fluid" width="400" alt="">
+        <div><h3 class="section-title mb-4">عن المـركز</h3>
+          <p class="section-description mb-4">هذا النص هو مثال لنص يمكن ان يستبدل في نفس المساحة، لقد تم توليد هذا النص
+            من يسعى المركز الوطني للدراسات والبحوث الاجتماعية إلى دعم صنع القرار من خلال دراسات علمية متخصصة تعالج
+            القضايا والتحديات الاجتماعية في المملكة. يعمل المركز على تعزيز فهم عميق للتحولات المجتمعية، مما يسهم في بناء
+            مجتمع أكثر وعيًا واستقرارًا. يركز المركز على تقديم رؤى علمية قائمة على البيانات لدعم السياسات العامة.</p>
+          <div class="d-flex gap-3"><p class="list-item"><img src="img/elements1.svg" width="22" height="22"
+                                                              class="me-1" alt="elements1">تأثيـر المجتمـع</p>
+            <p class="list-item"><img src="img/search-list-02.svg" width="22" height="22" class="me-1" alt="elements1">الابتكــار
+            </p>
+            <p class="list-item"><img src="img/award-02.svg" width="22" height="22" class="me-1" alt="elements1">الشفافيـة
+            </p></div>
+          <a href="#" class="btn btn-primary">اقرأ المزيد <img src="img/arrow-left-02-white.svg" width="22" height="22"
+                                                               class="ms-1 rtl-rotate" alt="arrow-left"></a></div>
+      </div>
+    </div>
+  </section>
+  <section id="home-services">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center"><h3 class="section-title">الخدمات المقدمة</h3><a
+        href="#"><span class="badge text-bg-light rounded-pill">عرض الكل</span></a></div>
+      <div class="row mt-5">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="d-flex justify-content-between"><span class="service-card-icon"><img src="img/elements11.svg"
+                                                                                             class="" alt="elements11"> </span><a
+              href="#"><img src="img/arrow-up-right-01.svg" class="rtl-horizontal-mirror" alt="arrow-left-02"></a></div>
+            <h6 class="service-card-title">طلب استشارة بحثية</h6>
+            <p class="service-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p></div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="d-flex justify-content-between"><span class="service-card-icon"><img src="img/elements11.svg"
+                                                                                             class="" alt="elements11"> </span><a
+              href="#"><img src="img/arrow-up-right-01.svg" class="rtl-horizontal-mirror" alt="arrow-left-02"></a></div>
+            <h6 class="service-card-title">طلب استشارة بحثية</h6>
+            <p class="service-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p></div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="d-flex justify-content-between"><span class="service-card-icon"><img src="img/elements11.svg"
+                                                                                             class="" alt="elements11"> </span><a
+              href="#"><img src="img/arrow-up-right-01.svg" class="rtl-horizontal-mirror" alt="arrow-left-02"></a></div>
+            <h6 class="service-card-title">طلب استشارة بحثية</h6>
+            <p class="service-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p></div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="d-flex justify-content-between"><span class="service-card-icon"><img src="img/elements11.svg"
+                                                                                             class="" alt="elements11"> </span><a
+              href="#"><img src="img/arrow-up-right-01.svg" class="rtl-horizontal-mirror" alt="arrow-left-02"></a></div>
+            <h6 class="service-card-title">طلب استشارة بحثية</h6>
+            <p class="service-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p></div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="d-flex justify-content-between"><span class="service-card-icon"><img src="img/elements11.svg"
+                                                                                             class="" alt="elements11"> </span><a
+              href="#"><img src="img/arrow-up-right-01.svg" class="rtl-horizontal-mirror" alt="arrow-left-02"></a></div>
+            <h6 class="service-card-title">طلب استشارة بحثية</h6>
+            <p class="service-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p></div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="d-flex justify-content-between"><span class="service-card-icon"><img src="img/elements11.svg"
+                                                                                             class="" alt="elements11"> </span><a
+              href="#"><img src="img/arrow-up-right-01.svg" class="rtl-horizontal-mirror" alt="arrow-left-02"></a></div>
+            <h6 class="service-card-title">طلب استشارة بحثية</h6>
+            <p class="service-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="home-researches">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center"><h3 class="section-title">الدراسات والبحوث</h3><a
+        href="#" class="btn btn-primary">اقرأ المزيد <img src="img/arrow-left-02-white.svg" width="22" height="22"
+                                                          class="ms-1 rtl-rotate" alt="arrow-left"></a></div>
+      <p class="section-description mb-4 mw-100 mt-3" style="width: 700px;">هذا النص هو مثال لنص يمكن ان يستبدل في نفس
+        المساحة، لقد تم توليد هذا النص من يسعى المركز الوطني للدراسات والبحوث الاجتماعية إلى دعم صنع القرار من خلال
+        دراسات علمية متخصصة تعالج القضايا والتحديات الاجتماعية في المملكة. يعمل المركز على تعزيز فهم عميق للتحولات
+        المجتمعية، مما يسهم في بناء مجتمع أكثر وعيًا واستقرارًا. يركز المركز على تقديم رؤى علمية قائمة على البيانات لدعم
+        السياسات العامة.</p>
+      <div class="row mt-5">
+        <div class="col-12 col-lg-6 mb-4"><a href="#" class="link-underline link-underline-opacity-0">
+          <div class="research-card"><img src="img/image_fx (9).jpg" class="research-card-img img-fluid"
+                                          alt="elements11"><h6 class="research-card-title">طلب استشارة بحثية</h6>
+            <p class="research-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p>
+            <div class="research-card-tags"><span class="tag green">بحث </span><span
+              class="tag blue">البحث المتقدم </span><span class="tag gray">مجالات البحث</span></div>
+          </div>
+        </a></div>
+        <div class="col-12 col-lg-6 mb-4"><a href="#" class="link-underline link-underline-opacity-0">
+          <div class="research-card"><img src="img/image_fx (9).jpg" class="research-card-img img-fluid"
+                                          alt="elements11"><h6 class="research-card-title">طلب استشارة بحثية</h6>
+            <p class="research-card-description">نقدّم استشارات بحثية متخصصة تدعم متخذي القرار، وتُسهم في معالجة القضايا
+              الاجتماعية من خلال منهجية علمية دقيقة وموثوقة.</p>
+            <div class="research-card-tags"><span class="tag green">بحث </span><span
+              class="tag blue">البحث المتقدم </span><span class="tag gray">مجالات البحث</span></div>
+          </div>
+        </a></div>
+      </div>
+    </div>
+  </section>
+  <section id="home-recent-news">
+    <div class="container"><h3 class="section-title">أحدث الأخبار</h3>
+      <p class="section-description mb-4 mw-100 mt-3" style="width: 825px;">تابع أحدث مستجدات المركز من فعاليات نوعية،
+        اتفاقيات استراتيجية، إصدارات علمية، وإنجازات بحثية رصينة تواكب التغيرات الاجتماعية المتسارعة وتدعم السياسات
+        العامة لتحقيق أهداف التنمية الوطنية الشاملة.</p>
+      <div class="row mt-5">
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3"><h6 class="section-subtitle">الأخبـار</h6>
+            <a href="#" class="btn btn-link link-dark link-underline link-underline-opacity-0">اقرا المزيد <img
+              src="img/Vector.svg" class="rotate-180" width="14" height="10" class="ms-1" alt="arrow-left"></a></div>
+          <div class="home-top-news-wrapper d-flex flex-column gap-3">
+            <div class="recent-news-vertical-card"><img src="img/image_fx (10).jpg" alt="image_fx (10).jpg"
+                                                        class="img-fluid">
+              <div class="d-flex flex-column"><h6 class="recent-news-vertical-card-title">توقيع اتفاقية تعاون مع جامعة
+                الملك سعود</h6>
+                <p class="recent-news-vertical-card-description">وقّع المركز الوطني للدراسات والبحوث الاجتماعية مذكرة
+                  تفاهم لتعزيز التعاون البحثي وتبادل الخبرات مع الجهات الأكاديمية والمراكز المتخصصة.</p>
+                <div class="d-flex align-items-center gap-2 mt-auto"><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon" src="img/clock-01.svg"
+                                                                        alt="arrow-left"> February 12, 2025 </span><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon"
+                                                                        src="img/message-notification-02.svg"
+                                                                        alt="arrow-left"> NO Comments </span><span
+                  class="metadata d-flex align-items-center gap-1"><a href="#">اقرأ المزيد <img class="icon rtl-rotate"
+                                                                                                src="img/arrow-left-02-primary.svg"
+                                                                                                alt="arrow-left"></a></span>
+                </div>
+              </div>
+            </div>
+            <div class="recent-news-vertical-card"><img src="img/image_fx (10).jpg" alt="image_fx (10).jpg"
+                                                        class="img-fluid">
+              <div class="d-flex flex-column"><h6 class="recent-news-vertical-card-title">توقيع اتفاقية تعاون مع جامعة
+                الملك سعود</h6>
+                <p class="recent-news-vertical-card-description">وقّع المركز الوطني للدراسات والبحوث الاجتماعية مذكرة
+                  تفاهم لتعزيز التعاون البحثي وتبادل الخبرات مع الجهات الأكاديمية والمراكز المتخصصة.</p>
+                <div class="d-flex align-items-center gap-2 mt-auto"><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon" src="img/clock-01.svg"
+                                                                        alt="arrow-left"> February 12, 2025 </span><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon"
+                                                                        src="img/message-notification-02.svg"
+                                                                        alt="arrow-left"> NO Comments </span><span
+                  class="metadata d-flex align-items-center gap-1"><a href="#">اقرأ المزيد <img class="icon rtl-rotate"
+                                                                                                src="img/arrow-left-02-primary.svg"
+                                                                                                alt="arrow-left"></a></span>
+                </div>
+              </div>
+            </div>
+            <div class="recent-news-vertical-card"><img src="img/image_fx (10).jpg" alt="image_fx (10).jpg"
+                                                        class="img-fluid">
+              <div class="d-flex flex-column"><h6 class="recent-news-vertical-card-title">توقيع اتفاقية تعاون مع جامعة
+                الملك سعود</h6>
+                <p class="recent-news-vertical-card-description">وقّع المركز الوطني للدراسات والبحوث الاجتماعية مذكرة
+                  تفاهم لتعزيز التعاون البحثي وتبادل الخبرات مع الجهات الأكاديمية والمراكز المتخصصة.</p>
+                <div class="d-flex align-items-center gap-2 mt-auto"><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon" src="img/clock-01.svg"
+                                                                        alt="arrow-left"> February 12, 2025 </span><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon"
+                                                                        src="img/message-notification-02.svg"
+                                                                        alt="arrow-left"> NO Comments </span><span
+                  class="metadata d-flex align-items-center gap-1"><a href="#">اقرأ المزيد <img class="icon rtl-rotate"
+                                                                                                src="img/arrow-left-02-primary.svg"
+                                                                                                alt="arrow-left"></a></span>
+                </div>
+              </div>
+            </div>
+            <div class="recent-news-vertical-card"><img src="img/image_fx (10).jpg" alt="image_fx (10).jpg"
+                                                        class="img-fluid">
+              <div class="d-flex flex-column"><h6 class="recent-news-vertical-card-title">توقيع اتفاقية تعاون مع جامعة
+                الملك سعود</h6>
+                <p class="recent-news-vertical-card-description">وقّع المركز الوطني للدراسات والبحوث الاجتماعية مذكرة
+                  تفاهم لتعزيز التعاون البحثي وتبادل الخبرات مع الجهات الأكاديمية والمراكز المتخصصة.</p>
+                <div class="d-flex align-items-center gap-2 mt-auto"><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon" src="img/clock-01.svg"
+                                                                        alt="arrow-left"> February 12, 2025 </span><span
+                  class="metadata d-flex align-items-center gap-1"><img class="icon"
+                                                                        src="img/message-notification-02.svg"
+                                                                        alt="arrow-left"> NO Comments </span><span
+                  class="metadata d-flex align-items-center gap-1"><a href="#">اقرأ المزيد <img class="icon rtl-rotate"
+                                                                                                src="img/arrow-left-02-primary.svg"
+                                                                                                alt="arrow-left"></a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="mb-3"><h6 class="section-subtitle">الأحداث القادمة</h6></div>
+          <div class="home-upcoming-events-wrapper d-flex flex-column gap-3">
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+            <div class="upcoming-event-card"><span class="upcoming-event-card-date"><div class="day">15</div><div
+              class="month">سبتمبر</div></span><h6 class="upcoming-event-card-title">ورشة عمل:<br>أدوات قياس الأثر
+              الاجتماعي</h6><span class="tag live">Live</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="home-sponsors">
+    <div class="container">
+      <div class="swiper sponsors-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="img/sponsors-1.svg" class="img-fluid" height="70" alt="Sponsor 1"></div>
+          <div class="swiper-slide"><img src="img/sponsors-2.svg" class="img-fluid" height="70" alt="Sponsor 2"></div>
+          <div class="swiper-slide"><img src="img/sponsors-3.svg" class="img-fluid" height="70" alt="Sponsor 3"></div>
+          <div class="swiper-slide"><img src="img/sponsors-1.svg" class="img-fluid" height="70" alt="Sponsor 1"></div>
+          <div class="swiper-slide"><img src="img/sponsors-2.svg" class="img-fluid" height="70" alt="Sponsor 2"></div>
+          <div class="swiper-slide"><img src="img/sponsors-3.svg" class="img-fluid" height="70" alt="Sponsor 3"></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<button class="btn btn-primary" style="border-radius: 50%;
+		width: 60px;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		bottom: 20px;
+		right: 20px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#accessibility-drawer"
+        aria-controls="accessibility-drawer"><span class="material-symbols-outlined" style="font-size: 36px">settings_accessibility</span>
+</button>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="accessibility-drawer"
+     aria-labelledby="accessibility-drawerLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <h5 class="offcanvas-title" id="accessibility-drawerLabel">قائمة الوصول</h5></div>
+  <div class="offcanvas-body">
+    <div class="drawer-body" style="border-top-left-radius: 1.5rem;
+				border-top-right-radius: 1.5rem;
+				background: #eaeaea;
+				padding: 28px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px">
+        <button class="i18n-btn" data-id="saturation" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="contrast" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="hyperlink" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="fontsize" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="textSpacing" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="lineheight" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="textalign" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="hideImages" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="cursor" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="animations" data-value=""><span></span>
+          <p></p></button>
+      </div>
+      <button type="button" class="btn btn-primary w-full" id="reset-accessibility" style="margin-top: 16px;
+					display: flex;
+					width: 100%;
+					justify-content: space-between;
+					color: #fff;
+					align-items: center;"><span class="material-symbols-outlined" style="font-size: 24px">refresh </span>إعادة
+        تعيين كافة إعدادات إمكانية الوصول <span></span></button>
+    </div>
+  </div>
+</div>
+<div id="cursor">></div>
+<footer>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4"><p class="column-title">عن المركـز</p>
+        <ul class="column-list">
+          <li><a href="#">نبذة عن المركز</a></li>
+          <li><a href="#">التسجيل</a></li>
+          <li><a href="#">الخدمات</a></li>
+          <li><a href="#">المجلس التنسيقي</a></li>
+          <li><a href="#">المركز الإعلامي</a></li>
+          <li><a href="#">مبادرات المركز</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4"><p class="column-title">المساعدة والدعم</p>
+        <ul class="column-list">
+          <li><a href="#">اتصل بنا</a></li>
+          <li><a href="#">تقديم شكوى</a></li>
+          <li><a href="#">الإبلاغ عن الفساد</a></li>
+          <li><a href="#">الأسئلة الشائعة</a></li>
+          <li><a href="#">مركز المساعدة</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4"><p class="column-title">روابط مهمة</p>
+        <ul class="column-list">
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">سياسة حرية المعلومات</a></li>
+          <li><a href="#">شروط الاستخدام</a></li>
+          <li><a href="#">سياسة إساءة الاستخدام</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4"><p class="column-title">تابعنا</p>
+        <ul class="column-list d-flex gap-2">
+          <li class="socialmedia-icon"><a href="#"><img src="img/fb.svg" alt=""></a></li>
+          <li class="socialmedia-icon"><a href="#"><img src="img/tiktok.svg" alt=""></a></li>
+          <li class="socialmedia-icon"><a href="#"><img src="img/instagram.svg" alt=""></a></li>
+          <li class="socialmedia-icon"><a href="#"><img src="img/youtube.svg" alt=""></a></li>
+          <li class="socialmedia-icon"><a href="#"><img src="img/linkedin.svg" alt=""></a></li>
+        </ul>
+        <img class="img-fluid mt-4" src="img/vision-2030.svg" alt="vision-2030"></div>
+    </div>
+    <div class="need-help mt-5"><a href="tel:19990">هل تحتاج مساعدة؟ اتصل على 19990</a></div>
+    <div class="copyrights pb-5">All rights reserved © 2025 - Hulul</div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"
+        integrity="sha512-03Ucfdj4I8Afv+9P/c9zkF4sBBGlf68zzr/MV+ClrqVCBXWAsTEjIoGCMqxhUxv1DGivK7Bm1IQd8iC4v7X2bw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+        async></script>
+<script src="js/script.js"></script>
+</body>
+</html>

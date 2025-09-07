@@ -1,0 +1,23 @@
+{% block paragraph %}
+  {% block content %}
+    <div class="content-section mb-4" id="content-section-{{ paragraph.id.value }}">
+      {% if content.field_title %}
+        <div class="content-section-title">
+          {{ content.field_title }}
+        </div>
+      {% endif %}
+
+      <div class="content-section-items">
+        {% if content.field_section %}
+          {% for key, item in content.field_section %}
+            {% if key|first != '#' %}
+              <div class="content-section-item">
+                {{ item }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  {% endblock %}
+{% endblock paragraph %}

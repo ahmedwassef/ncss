@@ -1,0 +1,209 @@
+<?php
+// NCSS About Block module file.
+
+use Drupal\Core\Language\LanguageManagerInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates or custom block.
+ */
+function ncss_about_block_preprocess_page(&$variables) {
+  $config = \Drupal::config('ncss_about_block.settings');
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  $image_fid = $config->get("$language.image");
+  $image_url = NULL;
+  if ($image_fid) {
+    $file = \Drupal\file\Entity\File::load($image_fid);
+    if ($file) {
+      $image_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+    }
+  }
+
+  $variables['about'] = [
+    'title' => $config->get("$language.title"),
+    'description' => $config->get("$language.description"),
+    'button_text' => $config->get("$language.button_text"),
+    'button_url' => $config->get("$language.button_url"),
+    'features' => explode("\n", $config->get("$language.features") ?? ''),
+    'image_url' => $image_url,
+    'social_links' => $config->get("$language.social_links") ?? [],
+    'contact_info' => $config->get("$language.contact_info") ?? [],
+  ];
+}
+
+/**
+ * Implements hook_schema().
+ */
+function ncss_about_block_schema() {
+  $schema['flag_counts'] = [
+    'description' => 'Stores custom data for something.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique ID.',
+        'type' => 'serial', // Auto-increment
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'entity_route' => [
+        'description' => 'The ID of the entity route (e.g., node ID).',
+        'type' => 'varchar',
+        'length' => 500,
+        'not null' => TRUE,
+      ],
+      'flag_id' => [
+        'description' => 'The machine name of the flag.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ],
+      'count' => [
+        'description' => 'Number of likes  /dislikes.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'Timestamp when record created.',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'data' => [
+        'description' => 'JSON-encoded additional data such as notes, gender, and reasons.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'entity_flag' => [ 'flag_id'],
+    ],
+  ];
+
+  $schema['flag_submissions'] = [
+    'description' => 'Stores individual flag submissions with reasons and data.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'entity_route' => [
+        'description' => 'The route of the flagged entity (e.g., node/123).',
+        'type' => 'varchar',
+        'length' => 500,
+        'not null' => TRUE,
+      ],
+      'flag_id' => [
+        'description' => 'The machine name of the flag.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'The type of submission (like, dislike, etc).',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => 'dislike',
+      ],
+      'uid' => [
+        'description' => 'User ID of the submitter.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'ip_address' => [
+        'description' => 'IP address of the submitter.',
+        'type' => 'varchar',
+        'length' => 45, // IPv6-compatible
+        'not null' => FALSE,
+      ],
+      'data' => [
+        'description' => 'JSON-encoded metadata (e.g., reasons, gender, notes).',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ],
+      'created' => [
+        'description' => 'Timestamp of submission.',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'flag_entity_idx' => ['entity_route', 'flag_id', 'type'],
+    ],
+  ];
+
+  return $schema;
+}
+
+
+/**
+ * Implements hook_schema().
+ */
+function contactus_form_schema()
+{
+  $schema['contactus_submissions'] = [
+    'description' => 'Stores contact us form submissions.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique submission ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'first_name' => [
+        'description' => 'First Name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'last_name' => [
+        'description' => 'Last Name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'email' => [
+        'description' => 'Email address',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'phone' => [
+        'description' => 'Phone number with country code',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ],
+      'subject' => [
+        'description' => 'Subject',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'message' => [
+        'description' => 'Message body',
+        'type' => 'text',
+        'not null' => TRUE,
+      ],
+      'attachment' => [
+        'description' => 'File ID of the uploaded attachment',
+        'type' => 'int',
+        'not null' => FALSE,
+      ],
+      'created' => [
+        'description' => 'Submission timestamp',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

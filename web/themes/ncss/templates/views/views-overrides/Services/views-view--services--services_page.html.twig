@@ -1,0 +1,123 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A CSS-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   JavaScript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A CSS-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   JavaScript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+<div >
+  <div class="container">
+    <nav id="breadcrumb" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">{{ "Home"|t}}   </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> {{ "Services"|t}}  </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col">
+        <div class="card rounded-3 border-0 mb-3">
+          <div class="card-body d-flex flex-column gap-3">
+            <button class="btn bg-primary text-primary bg-opacity-10 d-flex w-100"><i
+                class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+            <button class="btn text-secondary d-flex w-100"><i class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+            <button class="btn text-secondary d-flex w-100"><i class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+            <button class="btn text-secondary d-flex w-100"><i class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+            <button class="btn text-secondary d-flex w-100"><i class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+            <button class="btn text-secondary d-flex w-100"><i class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+            <button class="btn text-secondary d-flex w-100"><i class="hgi-stroke hgi-access me-2"></i> دعم الباحثين
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-9">
+        <div class="d-flex flex-column gap-3 mb-3 flex-md-row justify-content-between align-items-center">
+          <div class="input-group" style="max-width: 300px;">
+            <span class="input-group-text border-0 bg-light" id="basic-addon1"><i class="hgi hgi-stroke hgi-search-01"></i></span>
+            <input type="text" class="form-control bg-light border-0" placeholder="البحث" aria-label="search">
+          </div>
+        </div>
+        <div class="row">
+          {% if rows -%}
+            {{ rows }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+

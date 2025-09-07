@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{% set node = row._entity %}
+
+{% if node.field_img|length %}
+  {% set media = node.field_img.0.entity %}
+  {% set image_file = media.field_media_image.entity %}
+  {% if image_file %}
+    {% set uri = image_file.uri.value %}
+    {% set alt = media.field_media_image.alt %}
+    {#    <img src="{{ file_url(uri) }}" alt="{{ alt|e }}" loading="lazy">#}
+  {% endif %}
+{% endif %}
+
+<div class="single-workshop-card ">
+  <img src="{{ uri|image_style('media_library') }}" alt="{{ alt|e }}" loading="lazy"  class="single-workshop-card-img">
+  <div>
+    <p class="single-workshop-card-title mt-3">
+      {{ fields.title.content }}
+    </p>
+    <p class="single-workshop-card-description mt-3">
+      تتناول هذه الورشة أساليب واستراتيجيات التواصل الفعّال مع المشاركين في
+      البحوث الميدانية، بدءًا من التخطيط والتنسيق، إلى التفاعل المباشر أثناء
+      المقابلات أو الاستبيانات، مع مراعاة الخصوصية، والحساسية الثقافية، وأخلاقيات
+      البحث.
+    </p>
+    <div class="single-workshop-card-tags d-flex gap-3 align-items-center mt-4">
+      {% set colors = ['blue', 'gray', 'green', 'red'] %}
+
+      {% for tag in node.field_tags %}
+        {% set color = colors[loop.index0] is defined ? colors[loop.index0] : 'gray' %}
+        <span class="border-secondary border rounded-pill px-3 py-1 {{ color }}">{{ tag.entity.name.value }}</span>
+      {% endfor %}
+    </div>
+    <div class="single-workshop-card-action d-flex gap-3 align-items-center mt-4">
+{#      <a href="#" class="btn btn-primary">احجز مقعدك</a>#}
+      <a href="{{ fields.view_node.content }}" class="d-flex gap-2 align-items-center btn btn-outline-secondary rounded-pill">
+        {{"Learn More"|t}}
+        <i class="rtl-rotate hgi hgi-stroke hgi-arrow-right-02"></i>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+
+

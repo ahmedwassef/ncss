@@ -1,0 +1,206 @@
+<?php
+
+
+function ncss_preprocess(&$variables, $hook)
+{
+  $variables['base_path'] = base_path();
+  $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $currentRouteName=\Drupal::routeMatch()->getRouteName();
+  $language_manager = \Drupal::service('language_manager');
+    $currentRouteParameters=\Drupal::routeMatch()->getRawParameters()->all();
+
+  $url = \Drupal\Core\Url::fromRoute( $currentRouteName, $currentRouteParameters, ['language' => $language_manager->getLanguage($lang=='en'?"ar":"en")])->toString();
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getName();
+  $variables['lang'] = $lang ;
+  $variables['language'] = $language ;
+  $variables['lang_url'] = $url ;
+
+
+
+}
+
+
+function ncss_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+//  dd($form);
+//dd($form['#id'] );
+
+  if ($form_id=="contact_message_feedback_form"){
+
+
+    $form["#attributes"]['class'][] = 'row';
+
+    $form['name']['#prefix'] = '<div class="col-lg-6 col-md-6"><div class="contact-field p-relative c-subject mb-20">';
+    $form['name']['#suffix'] = '</div></div>';
+    $form['name']['#attributes']['class'][] = '';
+    $form['name']['#placeholder']= t('Your Name');
+
+    $form['subject']['#prefix'] = '<div class="col-lg-6 col-md-6"><div class="contact-field p-relative c-subject mb-20">';
+    $form['subject']['#suffix'] = '</div></div>';
+    $form['subject']['#attributes']['placeholder']= t('Subject');
+
+
+
+    $form['mail']['#prefix'] = '<div class="col-lg-6 col-md-6"><div class="contact-field p-relative c-subject mb-20">';
+    $form['mail']['#suffix'] = '</div></div>';
+    $form['mail']['#attributes']['class'][] = '';
+    $form['mail']['#placeholder']= t('Your Email');
+
+
+
+    $form['field_phone_number']['#prefix'] = '<div class="col-lg-6 col-md-6"><div class="contact-field p-relative c-subject mb-20">';
+    $form['field_phone_number']['#suffix'] = '</div></div>';
+    $form['field_phone_number']['#attributes']['class'][] = '';
+    $form['field_phone_number']['#attributes']['placeholder']= t('Your Phone Number');
+
+
+    $form['message']['#prefix'] = '<div class="col-lg-12"><div class="contact-field p-relative c-message mb-30">';
+    $form['message']['#suffix'] = '</div>';
+    $form['message']['#attributes']['placeholder']= t('Your Message');
+
+
+    $form['actions']['#prefix'] = '<div class="text-center">';
+    $form['actions']['#suffix'] = '</div>';
+    $form['actions']['submit']['#attributes']['class'][] = 'btn btn-secondary';
+  }
+   elseif($form_id=="views_exposed_form" && $form['#id'] =="views-exposed-form-blog-blog-page")
+    {
+      $form['query']['#prefix'] = '<div class="input-group"> <span class="input-group-text border-0 bg-light" id="basic-addon1"> <i class="hgi hgi-stroke hgi-search-01"></i> </span>';
+      $form['query']['#suffix'] = '</div> ';
+      $form['query']['#attributes']['class'][] = 'form-control bg-light border-0';
+      $form['query']['#placeholder']= t('Search');
+      $form['actions']['submit']['#attributes']['class'][] = 'd-none';
+    }
+  elseif($form_id=="views_exposed_form" && $form['#id'] =="views-exposed-form-events-page")
+  {
+    $form['query']['#prefix'] = '<div class="input-group"> <span class="input-group-text border-0 bg-light" id="basic-addon1"> <i class="hgi hgi-stroke hgi-search-01"></i> </span>';
+    $form['query']['#suffix'] = '</div>';
+    $form['query']['#attributes']['class'][] = 'form-control bg-light border-0';
+    $form['query']['#placeholder']= t('Search');
+    $form['actions']['submit']['#attributes']['class'][] = 'd-none';
+  }
+
+
+}
+
+function ncss_preprocess_node(&$variables)
+{
+
+ $node = $variables['node'];
+
+
+  // Only process advanced_page nodes
+  if ($node->getType() == 'advanced_page') {
+    $is_parent = $node->field_parent->isEmpty();
+    $variables['is_parent'] = $is_parent;
+
+    if ($is_parent) {
+      // This is a parent node, load its children
+        $query = \Drupal::entityQuery('node')
+        ->condition('type', 'advanced_page')
+        ->condition('field_parent', $node->id())
+        ->condition('status', 1)
+        ->accessCheck(TRUE); // Explicitly set access checking
+
+
+      $child_ids = $query->execute();
+
+      $child_links = [];
+      foreach ($child_ids as $child_id) {
+        $child_node = \Drupal\node\Entity\Node::load($child_id);
+        $child_links[] = [
+          'title' => $child_node->label(),
+          'url' => $child_node->toUrl()->toString(),
+          'is_current' => false,
+        ];
+      }
+      $variables['child_links'] = $child_links;
+    }
+    else {
+      // This is a child node, get its parent and siblings
+      $parent_node = $node->field_parent->entity;
+      $variables['parent_node'] = [
+        'title' => $parent_node->label(),
+        'url' => $parent_node->toUrl()->toString(),
+      ];
+
+      // Get siblings
+      $query = \Drupal::entityQuery('node')
+        ->condition('type', 'advanced_page')
+        ->condition('field_parent', $parent_node->id())
+            ->condition('status', 1)
+          ->accessCheck(TRUE); // Explicitly set access checking
+
+      $sibling_ids = $query->execute();
+
+      $sibling_links = [];
+      foreach ($sibling_ids as $sibling_id) {
+        $sibling_node = \Drupal\node\Entity\Node::load($sibling_id);
+        $sibling_links[] = [
+          'title' => $sibling_node->label(),
+          'url' => $sibling_node->toUrl()->toString(),
+          'is_current' => ($sibling_id == $node->id()),
+        ];
+      }
+      $variables['sibling_links'] = $sibling_links;
+    }
+  }
+
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+
+
+  // Provide a distinct $teaser boolean.
+  $variables['teaser'] = $variables['view_mode'] == 'teaser';
+  $variables['node'] = $variables['elements']['#node'];
+  $node = $variables['elements']['#node'];
+
+  if ($node->bundle()=="rooms"){
+    $images=[];
+    foreach ( $node->get('field_images') as $image) {
+      array_push($images,$image->entity-> uri->value);
+    }
+
+    $variables['node_images'] = $images;
+    $variables['node_facilities'] = $node->get('field_facilities')->referencedEntities();
+
+   }
+
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function ncss_preprocess_html(&$variables) {
+   $languages = [
+    'en' => \Drupal::languageManager()->getLanguage('en'),
+    'ar' => \Drupal::languageManager()->getLanguage('ar'),
+  ];
+
+  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $current_route = \Drupal::routeMatch()->getRouteName();
+  $current_params = \Drupal::routeMatch()->getRawParameters()->all();
+  $switch_links = [];
+  foreach ($languages as $langcode => $language) {
+    $url = \Drupal\Core\Url::fromRoute($current_route, $current_params, ['language' => $language])->toString();
+    $switch_links[$langcode] = [
+      'name' => $language->getName(),
+      'url' => $url,
+    ];
+  }
+  $variables['languages'] = $switch_links;
+  $variables['current_language'] = $current_language;
+  // Add footer menu variable for template use
+  $variables['footer_menu'] = NULL;
+
+  // You can populate this with actual menu blocks here
+   $variables['footer_menu'] = \Drupal::service('plugin.manager.block')->createInstance('system_menu_block:footer')->build();
+
+}
+
+function ncss_preprocess_header(&$variables) {
+
+}
+
+
+

@@ -1,0 +1,38 @@
+
+{% block paragraph %}
+  {% block content %}
+    <div class="accordion accordion-flush mb-4" id="accordion{{ paragraph.id.value }}">
+
+      {% if content.field_title %}
+        <h2 class="page-heading">  {{ content.field_title }}  </h2>
+
+      {% endif %}
+
+      {% if content.field_section %}
+        {% for key, item in content.field_section %}
+          {% if key|first != '#' %}
+            {% set paragraph_item = item['#paragraph'] %}
+            {% set paragraph_id = 'collapse-' ~ paragraph.id.value ~ '-' ~ key %}
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading{{ paragraph_id }}">
+                <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#{{ paragraph_id }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="{{ paragraph_id }}">
+                  {% if paragraph_item.field_title.value %}
+                    {{ paragraph_item.field_title.value }}
+                  {% else %}
+                  {% endif %}
+                </button>
+              </h2>
+              <div id="{{ paragraph_id }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{ paragraph_id }}" data-bs-parent="#accordion{{ paragraph.id.value }}">
+                <div class="accordion-body">
+                  {{ item }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  {% endblock %}
+{% endblock paragraph %}

@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{% if attributes.hasClass('form-file') %}
+  <input{{ attributes.addClass('d-none') }} />{{ children }}
+{% elseif attributes.type == 'tel' and attributes.id == 'input-4' %}
+  <div class="position-relative">
+    <input{{ attributes.addClass('form-control form-control-lg') }} />
+    {% if phone_codes is defined %}
+      <select class="form-select form-select-lg position-absolute top-0 end-0 bg-transparent border-top-0 border-end-0 border-bottom-0 rounded-0" style="width: 120px">
+        <option selected="selected">+966</option>
+        {% for code in phone_codes %}
+          <option value="{{ code.value }}">{{ code.label }}</option>
+        {% endfor %}
+      </select>
+    {% else %}
+      <select class="form-select form-select-lg position-absolute top-0 end-0 bg-transparent border-top-0 border-end-0 border-bottom-0 rounded-0" style="width: 120px">
+        <option selected="selected">+966</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    {% endif %}
+  </div>
+  {{ children }}
+{% elseif attributes.type == 'tel' and attributes.id == 'verification-code' %}
+  <div class="position-relative">
+    <input{{ attributes.addClass('form-control form-control-lg') }} />
+    <img class="position-absolute top-50 end-0 translate-middle" src="{{ base_path ~ directory }}/frontend/img/rotate-left.svg" alt="rotate-left.svg">
+  </div>
+  {{ children }}
+{% else %}
+  <input{{ attributes.addClass('form-control form-control-lg') }} />{{ children }}
+{% endif %}

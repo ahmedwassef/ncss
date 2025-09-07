@@ -1,0 +1,33 @@
+<?php
+/**
+ * Create custom table.
+ */
+/**
+ * Implements hook_help().
+ */
+function ncss_about_block_update_11003() {
+  $schema = \Drupal::database()->schema();
+
+  if ($schema->tableExists('flag_counts')) {
+    if (!$schema->fieldExists('flag_counts', 'data')) {
+      $schema->addField('flag_counts', 'data', [
+        'description' => 'JSON-encoded additional data such as notes, gender, and reasons.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ]);
+    }
+  }
+  else {
+    $schema_definition = ncss_about_block_schema()['flag_counts'];
+    $schema->createTable('flag_counts', $schema_definition);
+  }
+}
+
+function ncss_about_block_update_11005() {
+  $schema = \Drupal::database()->schema();
+  if (!$schema->tableExists('flag_submissions')) {
+    $schema_definition = ncss_about_block_schema()['flag_submissions'];
+    $schema->createTable('flag_submissions', $schema_definition);
+  }
+}

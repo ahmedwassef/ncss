@@ -1,0 +1,92 @@
+
+{% set cookie_info = cookie_information() %}
+{% set route_info = routeName() %}
+{% set likes = get_node_likes(route_info.route_parameters) %}
+{% set disLikes = get_node_dislikes(route_info.route_parameters) %}
+{% set satisfaction = get_node_satisfaction(route_info.route_parameters) %}
+{% set page_visitor_count = get_page_visitor_count() %}
+
+<section class="page-validation">
+  <div class="container"><p class="last-update text-center text-md-start">{{ 'Last modification date:'|t }}</p></div>
+  <hr class="border-primary">
+
+
+  <div class="container">
+    <div class="d-flex flex-column gap-y-4 flex-md-row justify-content-between align-items-center">
+      <div class="d-flex flex-row align-items-center gap-2"><p class="mb-0">{{ 'Was this page helpful?'|t }}</p>
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#pageRateCollapse">{{ 'Yes'|t }}</button>
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#pageRateCollapse">{{ 'No'|t }}</button>
+      </div>
+      <p class="mb-0 mt-2 mt-md-0"> 60 % {{ 'of users said yes from '|t }} 40000</p></div>
+    <div class="accordion mt-5" id="rateCollapse">
+      <div id="pageRateCollapse" class="accordion-collapse collapse" data-bs-parent="#rateCollapse">
+        <div class="accordion-body">
+          {{ drupal_form('Drupal\\ncss_about_block\\Form\\LikeForm', route_info.route_parameters) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    {% if page.footer_first %}
+      {{ page.footer_first }}
+
+    {% endif %}
+     <div class="copyrights pb-5">{{ 'All rights reserved © '|t }} {{ "now"|date("Y") }}</div>
+  </div>
+</footer>
+<button class="btn btn-primary" style="border-radius: 50%;
+		width: 60px;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		bottom: 20px;
+		right: 20px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#accessibility-drawer"
+        aria-controls="accessibility-drawer"><span class="material-symbols-outlined" style="font-size: 36px">settings_accessibility</span>
+</button>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="accessibility-drawer"
+     aria-labelledby="accessibility-drawerLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <h5 class="offcanvas-title" id="accessibility-drawerLabel">{{ 'Accessibility Menu'|t }}</h5></div>
+  <div class="offcanvas-body">
+    <div class="drawer-body" style="border-top-left-radius: 1.5rem;
+				border-top-right-radius: 1.5rem;
+				background: #eaeaea;
+				padding: 28px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px">
+        <button class="i18n-btn" data-id="saturation" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="contrast" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="hyperlink" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="fontsize" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="textSpacing" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="lineheight" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="textalign" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="hideImages" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="cursor" data-value=""><span></span>
+          <p></p></button>
+        <button class="i18n-btn" data-id="animations" data-value=""><span></span>
+          <p></p></button>
+      </div>
+      <button type="button" class="btn btn-primary w-full" id="reset-accessibility" style="margin-top: 16px;
+					display: flex;
+					width: 100%;
+					justify-content: space-between;
+					color: #fff;
+					align-items: center;"><span class="material-symbols-outlined" style="font-size: 24px">refresh </span>{{ 'Reset all accessibility settings'|t }} <span></span></button>
+    </div>
+  </div>
+</div>
+<div id="cursor">></div>

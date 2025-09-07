@@ -1,0 +1,7 @@
+name: 'NCSS About Block'
+type: module
+description: 'Custom block with multilingual config for About section.'
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:language

@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set node = row._entity %}
+
+{% if node.field_img|length %}
+  {% set media = node.field_img.0.entity %}
+  {% set image_file = media.field_media_image.entity %}
+  {% if image_file %}
+    {% set uri = image_file.uri.value %}
+    {% set alt = media.field_media_image.alt %}
+{#    <img src="{{ file_url(uri) }}" alt="{{ alt|e }}" loading="lazy">#}
+  {% endif %}
+{% endif %}
+<div class="swiper-slide" style="background-image: url({{ file_url(uri) }});">
+  <div class="container">
+    <div class="hero-content mw-100" style="width: 500px;">
+      <h1 class="title">
+        {{ fields.title.content }}
+      </h1>
+      <p class="description">
+        {{ fields.body.content }}
+      </p>
+      {% if fields.field_url.content  %}
+
+{#      <a href="{{fields.field_url.content}}" class="btn btn-primary">#}
+{#        <img src="{{ base_path ~ directory }}/frontend/img/forward-01.svg" class="me-2" width="19" height="19" alt="forward-01">عن المركز<#}
+{#        /a>#}
+{#    #}
+    </div>
+    {% endif  %}
+  </div>
+</div><!-- Slide 2 -->
+
+
+

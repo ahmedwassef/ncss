@@ -1,0 +1,13 @@
+{% block paragraph %}
+  <section class="slider pt-0">
+    <div class="container">
+    {% block content %}
+      <div class="swiper sponsors-slider">
+        <div class="swiper-wrapper">
+          {{ content }}
+        </div>
+      </div>
+    {% endblock %}
+    </div>
+  </section>
+{% endblock paragraph %}

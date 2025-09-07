@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link URL, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div class="row py-5">
+  {% for item in items|slice(0, 3) %}
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4">
+      <p class="column-title">{{ item.title }}</p>
+      {% if item.below %}
+        <ul class="column-list">
+          {% for sub_item in item.below %}
+            <li>
+              <a href="{{ sub_item.url.toString() }}">{{ sub_item.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4">
+    <p class="column-title">{{ 'Follow Us'|t }}</p>
+    <ul class="column-list d-flex gap-2">
+      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/fb.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/tiktok.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/instagram.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/youtube.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/linkedin.svg" alt=""></a></li>
+    </ul>
+    <img class="img-fluid mt-4" src="{{ base_path ~ directory }}/frontend/img/vision-2030.svg" alt="vision-2030">
+  </div>
+</div>

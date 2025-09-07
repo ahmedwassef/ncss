@@ -1,0 +1,9 @@
+{% if multiple %}
+  {% for item in items %}
+    <p class="section-description mb-4"> {{ item.content }}  </p>
+  {% endfor %}
+{% else %}
+  {% for item in items %}
+    <p class="section-description mb-4"> {{ item.content }}  </p>
+  {% endfor %}
+{% endif %}

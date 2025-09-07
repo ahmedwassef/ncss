@@ -1,0 +1,35 @@
+services:
+  ncss_about_block.config_form:
+    class: Drupal\ncss_about_block\Form\NcssAboutConfigForm
+    arguments: ['@language_manager']
+    tags:
+      - { name: form, type: config_form }
+
+  ncss_about_block.twig_extension:
+    class: Drupal\ncss_about_block\Template\CookieInformationTwigExtension
+    arguments: ['@config.factory', '@language_manager']
+    tags:
+      - { name: twig.extension }
+
+  ncss_about_block.twig_route_name:
+    class: Drupal\ncss_about_block\Template\RouteNameTwigExtension
+    arguments: ['@config.factory', '@language_manager']
+    tags:
+      - { name: twig.extension }
+
+  ncss_about_block.node_likes :
+    class: Drupal\ncss_about_block\TwigExtension\NodeLikes
+    arguments: [ '@renderer' ]
+    tags:
+      - { name: twig.extension }
+
+  ncss_about_block.text_cleaner:
+    class: Drupal\ncss_about_block\TwigExtension\TextCleaner
+    tags:
+      - { name: twig.extension }
+
+  ncss_about_block.helper_service:
+    class: Drupal\ncss_about_block\Services\Helper
+    arguments:
+      - '@file_system'
+      - '@file.repository'
