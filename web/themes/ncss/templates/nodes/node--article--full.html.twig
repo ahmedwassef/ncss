@@ -75,11 +75,12 @@
 
 {# {{dd(node.field_event_time)}} #}
 {% set title = node.title.value  %}
-{% set  image = (node.field_image.entity.fileuri)  %}
+{% set  image = (node.field_img.entity.fileuri)  %}
 {% set date = node.created.value %}
  {% set description = node.body.value %}
 {% set link = node.field_url[0].value %}
 {% set tags = node.field_tags.value %}
+{% set summary = node.body.summary_processed|default(null) %}
 
 
 
@@ -97,14 +98,23 @@
     {{ title }}
   </h1>
 
-  <p class="page-description">
-    يعكس الهيكل التنظيمي للمركز الوطني للدراسات والبحوث الاجتماعية توزيعًا
-    دقيقًا للمسؤوليات والأدوار، بما يضمن التكامل بين الإدارات ويساهم في تنفيذ
-    المهام البحثية والمجتمعية بكفاءة واحترافية.
-  </p>
+  {% if summary %}
+    <p class="page-description">
+      {{ summary|raw }}
+    </p>
+  {% endif %}
 </div>
 
 <div class="container my-5">
+   {% if node.field_img.0.entity %}
+    {% set image_uri = node.field_img.0.entity.field_media_image.0.entity.uri.value %}
+    {% set image_style = 'large' %}  {# Use any defined image style name here #}
+    {% set image_url = image_uri|image_style(image_style) %}
+    {% set alt_text = node.field_img.0.alt|default(title) %}
+    <img class="board-word-card-image img-fluid" src="{{ image_url }}" alt="{{ alt_text }}">
+  {% endif %}
+
+
   {{ description|raw }}
 </div>
 
