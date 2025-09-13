@@ -2,3 +2,15 @@
   max-height: 270px;
   width: auto;
 }
+.theme-container img {
+   max-width: 100%;
+   width: 100%;
+   height: auto !important;
+  display: block !important;
+  margin: auto !important;
+  width: 50% !important;
+  border-radius: .375rem;
+   margin-bottom: 1rem;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+   transition: transform .3s ease, box-shadow .3s ease;
+}
