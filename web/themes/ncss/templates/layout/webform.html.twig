@@ -23,7 +23,9 @@
 #}
  {% set form_id = element['#webform_id'] %}
       {% set title = form_id|replace({'_': ' '})|capitalize %}
-
+{% if lang=='ar' %}
+  {{ attach_library('ncss/rightCSS') }}
+{% endif %}
   <div class="bg-primary bg-opacity-10">
     <div class="container">
       <nav id="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">

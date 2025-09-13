@@ -71,7 +71,9 @@
 
 	{% include '@ncss/layout/header.html.twig' %}
 
-
+{% if lang=='ar' %}
+  {{ attach_library('ncss/rightCSS') }}
+{% endif %}
 <!-- breadcrumb-area-end -->
   <main class="bg-light">
 

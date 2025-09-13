@@ -70,7 +70,9 @@
 
 
 	{% include '@ncss/layout/header.html.twig' %}
-
+{% if lang=='ar' %}
+  {{ attach_library('ncss/rightCSS') }}
+{% endif %}
   <main>
 
 

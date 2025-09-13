@@ -1,5 +1,7 @@
 {% include '@ncss/layout/header.html.twig' %}
-
+{% if lang=='ar' %}
+  {{ attach_library('ncss/rightCSS') }}
+{% endif %}
 <div class="auth-layout container-fluid d-flex two-column">
   <a class="back-btn" href="/">
     <img src="/themes/ncss/frontend/img/arrow-left-02.svg" class="rtl-rotate" alt="{{ "Left arrow"|t }}">
