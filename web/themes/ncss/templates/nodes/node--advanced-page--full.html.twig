@@ -105,46 +105,46 @@
 
   <div class="container my-5   ">
     <div class="row">
-      <div class="col">
-        <div class="card rounded-3 border-0 mb-3  shadow-lg  mb-5 bg-body rounded">
-          <div class="card-body d-flex flex-column gap-3">
-            {% if is_parent %}
-              {# If this is a parent node, list current node as active and all child nodes #}
-              <a href="{{ url('<current>') }}" class="btn bg-primary text-primary bg-opacity-10 d-flex w-100">
-                <i class="hgi-stroke hgi-access me-2"></i>
-                {{ title }}
-              </a>
+      {% if child_links is defined and child_links|length > 1 %}
+        <div class="col">
+          <div class="card rounded-3 border-0 mb-3 shadow-lg mb-5 bg-body rounded">
+            <div class="card-body d-flex flex-column gap-3">
+              {% if is_parent %}
+                {# If this is a parent node, list current node as active and all child nodes #}
+                <a href="{{ url('<current>') }}" class="btn bg-primary text-primary bg-opacity-10 d-flex w-100">
+                  <i class="hgi-stroke hgi-access me-2"></i>
+                  {{ title }}
+                </a>
 
-              {% if child_links is defined %}
                 {% for child in child_links %}
                   <a href="{{ child.url }}" class="btn text-secondary d-flex w-100">
                     <i class="hgi-stroke hgi-access me-2"></i>
                     {{ child.title }}
                   </a>
                 {% endfor %}
-              {% endif %}
-            {% else %}
-              {# If this is a child node, list parent and all siblings #}
-              {% if parent_node is defined %}
-                <a href="{{ parent_node.url }}" class="btn text-secondary d-flex w-100">
-                  <i class="hgi-stroke hgi-access me-2"></i>
-                  {{ parent_node.title }}
-                </a>
-              {% endif %}
-
-              {% if sibling_links is defined %}
-                {% for sibling in sibling_links %}
-                  <a href="{{ sibling.url }}" class="btn {{ sibling.is_current ? 'bg-primary text-primary bg-opacity-10' : 'text-secondary' }} d-flex w-100">
+              {% else %}
+                {# If this is a child node, list parent and all siblings #}
+                {% if parent_node is defined %}
+                  <a href="{{ parent_node.url }}" class="btn text-secondary d-flex w-100">
                     <i class="hgi-stroke hgi-access me-2"></i>
-                    {{ sibling.title }}
+                    {{ parent_node.title }}
                   </a>
-                {% endfor %}
+                {% endif %}
+
+                {% if sibling_links is defined %}
+                  {% for sibling in sibling_links %}
+                    <a href="{{ sibling.url }}" class="btn {{ sibling.is_current ? 'bg-primary text-primary bg-opacity-10' : 'text-secondary' }} d-flex w-100">
+                      <i class="hgi-stroke hgi-access me-2"></i>
+                      {{ sibling.title }}
+                    </a>
+                  {% endfor %}
+                {% endif %}
               {% endif %}
-            {% endif %}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-9">
+      {% endif %}
+      <div class="{{ child_links is defined and child_links|length < 1 ? 'col-md-12' : 'col-sm-6 col-md-9' }}">
         <div class="section-description mb-4 theme-container">
           {{ description|raw }}
         </div>
