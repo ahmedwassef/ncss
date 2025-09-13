@@ -111,7 +111,20 @@
     {% set image_style = 'large' %}  {# Use any defined image style name here #}
     {% set image_url = image_uri|image_style(image_style) %}
     {% set alt_text = node.field_img.0.alt|default(title) %}
-    <img class="board-word-card-image img-fluid" src="{{ image_url }}" alt="{{ alt_text }}">
+     <div
+       class="who-we-are-section-image-slider position-relative overflow-hidden"
+     >
+       <div class="swiper-wrapper">
+         <div class="swiper-slide">
+           <img
+             class="board-word-card-image img-fluid"
+             src="{{ image_url }}"
+             alt="{{ alt_text }}"
+           />
+         </div>
+       </div>
+
+     </div>
   {% endif %}
 
 
