@@ -172,4 +172,6 @@ html[dir="rtl"] nav.navbar .navbar-nav .dropdown-menu .dropdown-item{
   direction: rtl;
 }
 
- 
+nav.navbar .navbar-nav .dropdown-menu {
+  min-width: 350px;
+}
