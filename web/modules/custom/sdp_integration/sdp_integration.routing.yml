@@ -1,0 +1,23 @@
+sdp_integration.user_info:
+  path: '/sdp-integration/test'
+  defaults:
+    _controller: '\Drupal\sdp_integration\Controller\SDPController::getUserInfo'
+    _title: 'Test SDP User Info'
+  requirements:
+    _permission: 'access content'
+
+sdp_integration.auth_check:
+  path: '/sdp-integration/auth-check'
+  defaults:
+    _controller: '\Drupal\sdp_integration\Controller\SDPController::checkAuthorization'
+    _title: 'Test SDP Authorization'
+  requirements:
+    _permission: 'access content'
+
+sdp_integration.settings:
+  path: '/admin/config/sdp-integration/settings'
+  defaults:
+    _form: '\Drupal\sdp_integration\Form\SDPSettingsForm'
+    _title: 'SDP Integration Settings'
+  requirements:
+    _permission: 'administer site configuration'

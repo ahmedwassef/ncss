@@ -98,16 +98,19 @@
   font-weight: 500;
   border-radius: 0.375rem;
  }
- 
+
 
 /* Dropdown arrow indicator */
- 
+
 
 /* Remove arrow for items without children */
 .menu__item:not(.menu__item--has-children) > .menu__link:after {
   content: '';
 }
 
+.sticky-bottom, .sticky-top{
+z-index:99 !important;
+}
 /* Responsive: show dropdowns on click for mobile */
 @media (max-width: 991.98px) {
   .menu__level--1,
@@ -172,4 +175,73 @@ html[dir="rtl"] nav.navbar .navbar-nav .dropdown-menu .dropdown-item{
   direction: rtl;
 }
 
- 
+nav.navbar .navbar-nav .dropdown-menu {
+  min-width: 350px;
+}
+.sticky-bottom, .sticky-top {
+  position: sticky;
+  z-index: 99 !important;
+}
+
+/* Homepage section spacing optimization */
+#home section {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#home-about {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+#home-recent-news {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+#home-services {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+#home-researches {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+/* Reduce container spacing within sections */
+#home .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Minimize gaps between elements within sections */
+#home .section-title {
+  margin-bottom: 15px !important;
+}
+
+#home .section-description {
+  margin-bottom: 15px !important;
+}
+
+#home .row {
+  margin-top: 20px !important;
+}
+
+/* Specific optimizations for mobile */
+@media (max-width: 768px) {
+  #home section {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
+
+  #home-about,
+  #home-recent-news,
+  #home-services,
+  #home-researches {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}

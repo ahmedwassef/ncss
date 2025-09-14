@@ -1,0 +1,7 @@
+name: 'SDP Integration'
+type: module
+description: 'Integrates Drupal with SDP authentication and authorization APIs.'
+package: 'Custom'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:system (>=10.0)
