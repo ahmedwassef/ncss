@@ -140,7 +140,7 @@
           </div>
         </div>
       {% endif %}
-      <div class="{{ ((child_links is defined and child_links|length > 0 ) or ( parent_node is defined and parent_node|length > 0 )) ? 'col-md-12' : 'col-sm-6 col-md-9' }}">
+      <div class="{{ ((child_links is defined and child_links|length > 0 ) or ( parent_node is defined and parent_node|length > 0 )) ? 'col-sm-6 col-md-9 ' : 'col-md-12' }}">
         <div class="section-description mb-4 theme-container">
           {{ description|raw }}
         </div>
