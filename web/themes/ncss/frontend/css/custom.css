@@ -166,3 +166,10 @@ html[dir="rtl"] .mega-menu__columns {
 html[dir="rtl"] .mega-menu__column-title {
   text-align: right;
 }
+
+html[dir="rtl"] nav.navbar .navbar-nav .dropdown-menu .dropdown-item{
+  text-align: right;
+  direction: rtl;
+}
+
+ 
