@@ -14,3 +14,44 @@
    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
    transition: transform .3s ease, box-shadow .3s ease;
 }
+
+.modern-section-pattern {
+  position: relative;
+  background: linear-gradient(135deg, #f8fafc 0%, #e9f5ee 100%);
+  overflow: hidden;
+  min-height: 400px;
+}
+.section-bg-pattern {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.modern-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+  border: 1px solid #e3e3e3;
+  transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1), transform 0.2s;
+}
+.modern-card:hover {
+  box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.18);
+  transform: translateY(-4px) scale(1.01);
+}
+.card-bg-pattern {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  z-index: 0;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .section-bg-pattern, .card-bg-pattern {
+    display: none;
+  }
+}

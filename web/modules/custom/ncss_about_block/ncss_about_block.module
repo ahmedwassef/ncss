@@ -18,7 +18,6 @@ function ncss_about_block_preprocess_page(&$variables) {
       $image_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
     }
   }
-
   $variables['about'] = [
     'title' => $config->get("$language.title"),
     'description' => $config->get("$language.description"),

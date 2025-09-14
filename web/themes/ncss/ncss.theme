@@ -15,7 +15,15 @@ function ncss_preprocess(&$variables, $hook)
   $variables['lang'] = $lang ;
   $variables['language'] = $language ;
   $variables['lang_url'] = $url ;
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $config = \Drupal::config('ncss_about_block.settings');
 
+  $variables['about'] = [
+    'title' => $config->get("$language.title"),
+    'description' => $config->get("$language.description"),
+    'social_links' => $config->get("$language.social_links") ?? [],
+    'contact_info' => $config->get("$language.contact_info") ?? [],
+  ];
 
 
 }
@@ -172,6 +180,8 @@ function ncss_preprocess_node(&$variables)
  * Implements hook_preprocess_html().
  */
 function ncss_preprocess_html(&$variables) {
+
+
    $languages = [
     'en' => \Drupal::languageManager()->getLanguage('en'),
     'ar' => \Drupal::languageManager()->getLanguage('ar'),

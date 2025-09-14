@@ -40,11 +40,12 @@
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4">
     <p class="column-title">{{ 'Follow Us'|t }}</p>
     <ul class="column-list d-flex gap-2">
-      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/fb.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/tiktok.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/instagram.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/youtube.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="#"><img src="{{ base_path ~ directory }}/frontend/img/linkedin.svg" alt=""></a></li>
+      {{ about.social_links.youtube }}
+      <li class="socialmedia-icon"><a href="{{ about.social_links.facebook }}"><img src="{{ base_path ~ directory }}/frontend/img/fb.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="{{ about.social_links.twitter }}"><img src="{{ base_path ~ directory }}/frontend/img/new-twitter-rectangle.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="{{ about.social_links.instagram }}"><img src="{{ base_path ~ directory }}/frontend/img/instagram.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="{{ about.social_links.youtube }}"><img src="{{ base_path ~ directory }}/frontend/img/youtube.svg" alt=""></a></li>
+      <li class="socialmedia-icon"><a href="{{ about.social_links.linkedin }}"><img src="{{ base_path ~ directory }}/frontend/img/linkedin.svg" alt=""></a></li>
     </ul>
     <img class="img-fluid mt-4" src="{{ base_path ~ directory }}/frontend/img/vision-2030.svg" alt="vision-2030">
   </div>
