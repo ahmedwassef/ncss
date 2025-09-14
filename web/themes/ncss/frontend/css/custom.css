@@ -129,3 +129,40 @@
     display: none;
   }
 }
+
+/* --- RTL/LTR Direction Support for Menus --- */
+html[dir="rtl"] .dropdown-menu,
+html[dir="rtl"] .menu__level {
+  text-align: right;
+}
+
+html[dir="rtl"] .dropdown-menu,
+html[dir="rtl"] .menu__level--1,
+html[dir="rtl"] .menu__level--2,
+html[dir="rtl"] .menu__level--3 {
+  left: auto !important;
+  right: 0 !important;
+}
+
+html[dir="rtl"] .menu__level--2,
+html[dir="rtl"] .menu__level--3 {
+  left: auto !important;
+  right: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0.1rem !important;
+}
+
+html[dir="rtl"] .mega-menu {
+  left: auto;
+  right: 0;
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .mega-menu__columns {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .mega-menu__column-title {
+  text-align: right;
+}
