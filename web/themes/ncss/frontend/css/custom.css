@@ -50,6 +50,80 @@
   pointer-events: none;
 }
 
+/* Multi-level dropdown navbar styles */
+.menu__level {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu__item {
+  position: relative;
+}
+
+/* Hide all submenus by default */
+.menu__level--1,
+.menu__level--2,
+.menu__level--3 {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  z-index: 1000;
+  background: #fff;
+  border-radius: 0.375rem;
+   padding: 0.5rem 0;
+}
+
+/* Show submenu on hover */
+.menu__item--has-children:hover > .menu__level,
+.menu__item--has-children:focus-within > .menu__level {
+  display: block;
+}
+
+/* Position deeper levels to the right */
+.menu__level--2,
+.menu__level--3 {
+  top: 0;
+  left: 100%;
+  margin-left: 0.1rem;
+}
+
+/* Style links */
+.menu__link {
+  display: block;
+  padding: 0.5rem 1.25rem;
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.375rem;
+ }
+ 
+
+/* Dropdown arrow indicator */
+ 
+
+/* Remove arrow for items without children */
+.menu__item:not(.menu__item--has-children) > .menu__link:after {
+  content: '';
+}
+
+/* Responsive: show dropdowns on click for mobile */
+@media (max-width: 991.98px) {
+  .menu__level--1,
+  .menu__level--2,
+  .menu__level--3 {
+    position: static;
+    box-shadow: none;
+    background: none;
+    display: none;
+    margin-left: 0;
+  }
+  .menu__item--has-children.open > .menu__level {
+    display: block;
+  }
+}
+
 @media (max-width: 768px) {
   .section-bg-pattern, .card-bg-pattern {
     display: none;

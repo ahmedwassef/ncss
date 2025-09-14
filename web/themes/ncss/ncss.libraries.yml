@@ -38,7 +38,9 @@ rightCSS:
   version: VERSION
 
   css:
-    component:
+    theme:
       frontend/css/style-ar.css: { rtl: true }
+      frontend/css/custom.css: { }
+
 
 
