@@ -37,142 +37,162 @@ class DisLikeForm extends FormBase {
     return 'dislike_form_' . $nid;
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state, $route_name = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    $form['#attributes']['class'] = ['w-100'];
+    $form['#prefix'] = '<form>';
+    $form['#suffix'] = '</form>';
 
-
-    $form['#attributes']['class'][] = 'w-[300px] bg-white p-3 text-start font-bold text-gray-500';
-
-    $form['route_name'] = [
-      '#type' => 'hidden',
-      '#value' => $route_name,
-    ];
-
-    $form['reason_title'] = [
-      '#markup' => '<p class="mb-3">'.$this->t('Please Write Your Notes').'</p><div class="my-4 flex items-end">
-      <hr class="w-[90px] border-t-[2px] border-secondary-500">
-      <hr class="flex-1">
-    </div><br>',
-    ];
-
-    $form['reasons_wrapper'] = [
+    // Row container
+    $form['row'] = [
       '#type' => 'container',
-      '#tree' => TRUE, // This enables nested structure
+      '#attributes' => ['class' => ['row']],
     ];
 
-    $form['reasons_wrapper']['technical_issue'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('There is a technical issue'),
-      '#return_value' => 'technical_issue',
-      '#prefix' => '<div class="flex items-center gap-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['checkbox', 'checkbox-primary']],
+    // Left column
+    $form['row']['left'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['col-md-6']],
     ];
 
-    $form['reasons_wrapper']['no_relevant_answer'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Couldn’t find a relevant answer'),
-      '#return_value' => 'no_relevant_answer',
-      '#prefix' => '<div class="flex items-center gap-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['checkbox', 'checkbox-primary']],
+    $form['row']['left']['title'] = [
+      '#markup' => '<h4 class="mb-1">' . $this->t('Please tell us the reason') . '</h4>',
     ];
 
-    $form['reasons_wrapper']['poorly_written'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Poorly written content'),
-      '#return_value' => 'written',
-      '#prefix' => '<div class="flex items-center gap-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['checkbox', 'checkbox-primary']],
+    $form['row']['left']['subtitle'] = [
+      '#markup' => '<p class="text-muted small mb-3">' . $this->t('(You can select multiple options)') . '</p>',
     ];
 
-    $form['reasons_wrapper']['hard_to_read_design'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Design made it hard to read'),
-      '#return_value' =>'hard_to_read_design',
-      '#prefix' => '<div class="flex items-center gap-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['checkbox', 'checkbox-primary']],
+    // Checkboxes
+    $checkboxes = [
+      'technical_issue' => 'There is a technical issue',
+      'no_relevant_answer' => 'Couldn’t find a relevant answer',
+      'poorly_written' => 'Poorly written content',
+      'checkOther' => 'Others',
     ];
 
-    $form['reasons_wrapper']['other'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Other'),
-      '#return_value' => 'other',
-      '#prefix' => '<div class="flex items-center gap-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['checkbox', 'checkbox-primary']],
+    $form['row']['left']['reasons_wrapper'] = [
+      '#type' => 'container',
+      '#tree' => TRUE,
     ];
 
-    $form['gender'] = [
-      '#type' => 'radios',
-      '#title' => $this->t('I am '),
-      '#options' => [
-        'male' => $this->t('Male'),
-        'female' => $this->t('Female'),
+    foreach ($checkboxes as $id => $label) {
+      $form['row']['left']['reasons_wrapper'][$id] = [
+        '#type' => 'checkbox',
+        '#title' => '',
+        '#return_value' => 1,
+        '#attributes' => [
+          'class' => ['form-check-input'],
+          'id' => $id,
+        ],
+        '#prefix' => '<div class="form-check mb-2">',
+        '#suffix' => '<label class="form-check-label" for="' . $id . '">' . $this->t($label) . '</label></div>',
+        '#theme_wrappers' => [],
+      ];
+    }
+
+    // Gender radios
+    $form['row']['left']['gender_wrapper'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['d-flex', 'align-items-center']],
+    ];
+
+    $form['row']['left']['gender_wrapper']['label'] = [
+      '#markup' => '<span class="me-3">' . $this->t('I am') . '</span>',
+    ];
+
+    $form['row']['left']['gender_wrapper']['male'] = [
+      '#type' => 'radio',
+      '#title' => '',
+      '#return_value' => 'male',
+      '#attributes' => [
+        'class' => ['form-check-input'],
+        'id' => 'genderMale',
+        'name' => 'gender',
+        'required' => 'required',
       ],
-      '#attributes' => ['class' => ['flex', 'flex-col', 'gap-2']],
+      '#prefix' => '<div class="form-check form-check-inline">',
+      '#suffix' => '<label class="form-check-label" for="genderMale">' . $this->t('Male') . '</label></div>',
+      '#theme_wrappers' => [],
     ];
 
-    $form['notes'] = [
+    $form['row']['left']['gender_wrapper']['female'] = [
+      '#type' => 'radio',
+      '#title' => '',
+      '#return_value' => 'female',
+      '#attributes' => [
+        'class' => ['form-check-input'],
+        'id' => 'genderFemale',
+        'name' => 'gender',
+        'required' => 'required',
+      ],
+      '#prefix' => '<div class="form-check form-check-inline">',
+      '#suffix' => '<label class="form-check-label" for="genderFemale">' . $this->t('Female') . '</label></div>',
+      '#theme_wrappers' => [],
+    ];
+
+    // Right column
+    $form['row']['right'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['col-md-6']],
+    ];
+
+    $form['row']['right']['notes'] = [
       '#type' => 'textarea',
+      '#title' => '',
       '#required' => TRUE,
       '#attributes' => [
-        'class' => ['textarea', 'textarea-primary', 'w-full', 'mt-4'],
-        'placeholder' =>$this->t('Notes'),
-        'label' =>$this->t('Notes'),
-        'aria-label' =>$this->t('Notes'),
+        'class' => ['form-control'],
+        'id' => 'commentTextarea',
+        'rows' => 5,
+        'placeholder' => $this->t('Enter your comment'),
       ],
+      '#title_attributes' => ['class' => ['form-label']],
+      '#prefix' => '<div class="mb-3"><label for="commentTextarea" class="form-label">' . $this->t('Comment') . '</label>',
+      '#suffix' => '</div>',
+      '#theme_wrappers' => [],
     ];
 
-    $form['actions'] = [
-      '#type' => 'actions',
+    // Hidden route name
+    $form['route_name'] = [
+      '#type' => 'hidden',
+      '#value' => $this->routeMatch->getRouteName(),
     ];
 
-    $form['actions']['yes'] = [
+    // Footer
+    $form['footer'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['d-flex', 'justify-content-between', 'align-items-center', 'mt-5']],
+    ];
+
+    $form['footer']['info'] = [
+      '#markup' => '<div><p class="mb-0 small text-muted">' .
+        $this->t('For more information, please review #rules of engagement</a> and #e-participation statement</a>.') .
+        '</p></div>',
+    ];
+
+    $form['footer']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Send'),
-      '#attributes' => [
-        'class' => ['gradient-primary', 'btn', 'btn-sm', 'mt-3', 'px-8', 'font-bold', 'text-white'],
-      ],
-      '#submit' => ['::submitForm'],
+      '#value' => $this->t('Submit'),
+      '#attributes' => ['class' => ['btn', 'btn-primary', 'px-4']],
+      '#theme_wrappers' => [],
     ];
-
-    $form['actions']['no'] = [
-      '#type' => 'button',
-      '#value' => $this->t('Cancel'),
-      '#attributes' => [
-        'class' => ['gradient-secondary', 'btn', 'btn-sm', 'mt-3', 'px-8', 'font-bold', 'text-white'],
-        'data-overlay' => '#page-dislike-modal',
-      ],
-    ];
-
 
     return $form;
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
     $reasons = array_filter($form_state->getValue('reasons_wrapper') ?? []);
-
     $gender = $form_state->getValue('gender');
     $notes = $form_state->getValue('notes');
     $route_name = $form_state->getValue('route_name');
-    $data=[
-      "reasons"=>$reasons,
-      "gender"=>$gender,
-      "notes"=>$notes,
-    ];
-    $this->saveFlag($route_name, 'dislike',$data);
 
-    // Example: log the values (replace with saving to DB or another action as needed)
-    \Drupal::logger('ncss_about_block')->notice('Feedback submitted: rating = @rating, gender = @gender, reasons = @reasons, notes = @notes, route = @route', [
-      '@rating' => 1,
-      '@gender' => $gender,
-      '@reasons' => implode(', ', $reasons),
-      '@notes' => $notes,
-      '@route' => $route_name,
-    ]);
+    $data = [
+      "reasons" => $reasons,
+      "gender" => $gender,
+      "notes" => $notes,
+    ];
+
+    $this->saveFlag($route_name, 'dislike', $data);
 
     $this->messenger->addStatus($this->t('You disliked this content.'));
   }
@@ -222,5 +242,4 @@ class DisLikeForm extends FormBase {
       ])
       ->execute();
   }
-
 }

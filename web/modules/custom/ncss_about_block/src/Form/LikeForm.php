@@ -43,124 +43,102 @@ class LikeForm extends FormBase {
    * {@inheritdoc}
    */
 
-  /**
-   * {@inheritdoc}
-   */
-  public function buildForm(array $form, FormStateInterface $form_state, $route_name = NULL) {
+
+
+
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $form['#attributes']['class'][] = 'w-100';
+    $form['#prefix'] = '<form>';
+    $form['#suffix'] = '</form>';
 
-    $form['route_name'] = [
-      '#type' => 'hidden',
-      '#value' => $route_name,
-    ];
-
-    // Create the row container
+    // Row container
     $form['row'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['row']],
     ];
 
-    // Left column (col-md-6)
-    $form['row']['left_column'] = [
+    // Left column
+    $form['row']['left'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['col-md-6']],
     ];
 
-    $form['row']['left_column']['title'] = [
-      '#markup' => '<h4 class="mb-1">' . $this->t('من فضلك أخبرنا بالسبب') . '</h4>',
+    $form['row']['left']['title'] = [
+      '#markup' => '<h4 class="mb-1">من فضلك أخبرنا بالسبب</h4>',
     ];
 
-    $form['row']['left_column']['subtitle'] = [
-      '#markup' => '<p class="text-muted small mb-3">' . $this->t('(يمكنك تحديد خيارات متعددة)') . '</p>',
+    $form['row']['left']['subtitle'] = [
+      '#markup' => '<p class="text-muted small mb-3">(يمكنك تحديد خيارات متعددة)</p>',
     ];
 
     // Checkboxes
-    $form['row']['left_column']['reasons_wrapper'] = [
-      '#type' => 'container',
-      '#tree' => TRUE,
+    $checkboxes = [
+      'checkRelevant' => 'المحتوى ذو صلة',
+      'checkWellWritten' => 'لقد كانت مكتوبة بشكل جيد',
+      'checkEasyRead' => 'جعل التخطيط من السهل القراءة',
+      'checkOther' => 'شيء آخر',
     ];
 
-    $form['row']['left_column']['reasons_wrapper']['relevant'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('المحتوى ذو صلة'),
-      '#return_value' => 1,
-      '#prefix' => '<div class="form-check mb-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['form-check-input'], 'id' => 'checkRelevant'],
-      '#title_display' => 'after',
-      '#label_attributes' => ['class' => ['form-check-label'], 'for' => 'checkRelevant'],
-    ];
+    foreach ($checkboxes as $id => $label) {
+      $form['row']['left'][$id] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t($label),
+        '#title_display' => 'after',
+        '#return_value' => 1,
+        '#attributes' => [
+          'class' => ['form-check-input'],
+          'id' => $id,
+        ],
+        '#prefix' => '<div class="form-check mb-2">',
+        '#suffix' => ' </div>',
+      ];
+    }
 
-    $form['row']['left_column']['reasons_wrapper']['well_written'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('لقد كانت مكتوبة بشكل جيد'),
-      '#return_value' => 1,
-      '#prefix' => '<div class="form-check mb-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['form-check-input'], 'id' => 'checkWellWritten'],
-      '#title_display' => 'after',
-      '#label_attributes' => ['class' => ['form-check-label'], 'for' => 'checkWellWritten'],
-    ];
-
-    $form['row']['left_column']['reasons_wrapper']['easy_read'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('جعل التخطيط من السهل القراءة'),
-      '#return_value' => 1,
-      '#prefix' => '<div class="form-check mb-2">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['form-check-input'], 'id' => 'checkEasyRead'],
-      '#title_display' => 'after',
-      '#label_attributes' => ['class' => ['form-check-label'], 'for' => 'checkEasyRead'],
-    ];
-
-    $form['row']['left_column']['reasons_wrapper']['other'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('شيء آخر'),
-      '#return_value' => 1,
-      '#prefix' => '<div class="form-check mb-4">',
-      '#suffix' => '</div>',
-      '#attributes' => ['class' => ['form-check-input'], 'id' => 'checkOther'],
-      '#title_display' => 'after',
-      '#label_attributes' => ['class' => ['form-check-label'], 'for' => 'checkOther'],
-    ];
-
-    // Gender selection
-    $form['row']['left_column']['gender_wrapper'] = [
+    // Gender radios
+    $form['row']['left']['gender_wrapper'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['d-flex', 'align-items-center']],
     ];
 
-    $form['row']['left_column']['gender_wrapper']['label'] = [
-      '#markup' => '<span class="me-3">' . $this->t('أنا') . '</span>',
+    $form['row']['left']['gender_wrapper']['label'] = [
+      '#markup' => '<span class="me-3">أنا</span>',
     ];
 
-    $form['row']['left_column']['gender_wrapper']['gender'] = [
-      '#type' => 'radios',
-      '#options' => [
-        'male' => $this->t('ذكر'),
-        'female' => $this->t('أنثى'),
+    $form['row']['left']['gender_wrapper']['male'] = [
+      '#type' => 'radio',
+      '#title' => $this->t('ذكر'),
+      '#return_value' => 'male',
+      '#attributes' => [
+        'class' => ['form-check-input'],
+        'id' => 'genderMale',
+        'name' => 'gender',
+        'required' => 'required',
       ],
-      '#required' => TRUE,
-      '#attributes' => ['class' => ['form-check-inline']],
       '#prefix' => '<div class="form-check form-check-inline">',
-      '#suffix' => '</div>',
-      '#title_display' => 'invisible',
-      '#id' => 'gender-radios',
+      '#suffix' => ' </div>',
     ];
 
-    // Right column (col-md-6)
-    $form['row']['right_column'] = [
+    $form['row']['left']['gender_wrapper']['female'] = [
+      '#type' => 'radio',
+      '#title' => $this->t('أنثى'),
+      '#return_value' => 'female',
+      '#attributes' => [
+        'class' => ['form-check-input'],
+        'id' => 'genderFemale',
+        'name' => 'gender',
+        'required' => 'required',
+      ],
+      '#prefix' => '<div class="form-check form-check-inline">',
+      '#suffix' => ' </div>',
+    ];
+
+    // Right column
+    $form['row']['right'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['col-md-6']],
     ];
 
-    // Comment textarea
-    $form['row']['right_column']['comment_wrapper'] = [
-      '#type' => 'container',
-      '#attributes' => ['class' => ['mb-3']],
-    ];
-
-    $form['row']['right_column']['comment_wrapper']['comment'] = [
+    $form['row']['right']['comment'] = [
       '#type' => 'textarea',
       '#title' => $this->t('تعليق'),
       '#required' => TRUE,
@@ -171,30 +149,31 @@ class LikeForm extends FormBase {
         'placeholder' => $this->t('النص المدخل'),
       ],
       '#title_attributes' => ['class' => ['form-label']],
+      '#prefix' => '<div class="mb-3">',
+      '#suffix' => '</div>',
     ];
 
-    // Footer with info text and submit button
+    // Footer
     $form['footer'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['d-flex', 'justify-content-between', 'align-items-center', 'mt-5']],
     ];
 
-    $form['footer']['info_text'] = [
-      '#markup' => '<div><p class="mb-0 small text-muted">' .
-        $this->t('لمزيد من المعلومات يمكنك مراجعة <a href="#">rules of engagement</a> و <a href="#">e-participation statement</a>') .
-        '</p></div>',
+    $form['footer']['info'] = [
+      '#markup' => '<div><p class="mb-0 small text-muted">لمزيد من المعلومات يمكنك مراجعة #rules of engagement</a> و #e-participation statement</a></p></div>',
     ];
 
     $form['footer']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('إرسال'),
-      '#attributes' => [
-        'class' => ['btn', 'btn-primary', 'px-4'],
-      ],
+      '#attributes' => ['class' => ['btn', 'btn-primary', 'px-4']],
     ];
 
     return $form;
   }
+
+
+
 
   /**
    * {@inheritdoc}

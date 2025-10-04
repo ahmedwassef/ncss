@@ -14,7 +14,7 @@
   <input{{ attributes.addClass('d-none') }} />{{ children }}
 {% elseif attributes.type == 'tel' and attributes.id == 'input-4' %}
   <div class="position-relative">
-    <input{{ attributes.addClass('form-control form-control-lg') }} />
+    <input{{ attributes.addClass('form-control ') }} />
     {% if phone_codes is defined %}
       <select class="form-select form-select-lg position-absolute top-0 end-0 bg-transparent border-top-0 border-end-0 border-bottom-0 rounded-0" style="width: 120px">
         <option selected="selected">+966</option>
@@ -29,10 +29,10 @@
   {{ children }}
 {% elseif attributes.type == 'tel' and attributes.id == 'verification-code' %}
   <div class="position-relative">
-    <input{{ attributes.addClass('form-control form-control-lg') }} />
+    <input{{ attributes.addClass('form-control ') }} />
     <img class="position-absolute top-50 end-0 translate-middle" src="{{ base_path ~ directory }}/frontend/img/rotate-left.svg" alt="rotate-left.svg">
   </div>
   {{ children }}
 {% else %}
-  <input{{ attributes.addClass('form-control form-control-lg') }} />{{ children }}
+  <input{{ attributes.addClass('form-control  ') }} />{{ children }}
 {% endif %}

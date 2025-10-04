@@ -7,7 +7,9 @@
 {% set page_visitor_count = get_page_visitor_count() %}
 
 <section class="page-validation">
-  <div class="container"><p class="last-update text-center text-md-start">{{ 'Last modification date:'|t }}</p></div>
+  {% if node.changed.value %}
+  <div class="container"><p class="last-update text-center text-md-start">{{ 'Last modification date:'|t }} {{ node.changed.value|date("d M Y H:i") }}</p></div>
+ {% endif %}
   <hr class="border-primary">
 
 
@@ -15,13 +17,19 @@
     <div class="d-flex flex-column gap-y-4 flex-md-row justify-content-between align-items-center">
       <div class="d-flex flex-row align-items-center gap-2"><p class="mb-0">{{ 'Was this page helpful?'|t }}</p>
         <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#pageRateCollapse">{{ 'Yes'|t }}</button>
-        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#pageRateCollapse">{{ 'No'|t }}</button>
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#pageRateCollapseNo">{{ 'No'|t }}</button>
       </div>
-      <p class="mb-0 mt-2 mt-md-0"> 60 % {{ 'of users said yes from '|t }} 40000</p></div>
+      <p class="mb-0 mt-2 mt-md-0"> {{ satisfaction }} % {{ 'of users said yes from '|t }} {{ likes }}</p></div>
     <div class="accordion mt-5" id="rateCollapse">
       <div id="pageRateCollapse" class="accordion-collapse collapse" data-bs-parent="#rateCollapse">
         <div class="accordion-body">
+
           {{ drupal_form('Drupal\\ncss_about_block\\Form\\LikeForm', route_info.route_parameters) }}
+        </div>
+      </div>
+      <div id="pageRateCollapseNo" class="accordion-collapse collapse" data-bs-parent="#rateCollapseNo">
+        <div class="accordion-body">
+          {{ drupal_form('Drupal\\ncss_about_block\\Form\\DisLikeForm', route_info.route_parameters) }}
         </div>
       </div>
     </div>
