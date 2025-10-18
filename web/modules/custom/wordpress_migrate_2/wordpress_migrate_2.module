@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * WordPress Migrate module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wordpress_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.wordpress_migrate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('WordPress Migrate allows you to migrate content from WordPress to Drupal 11.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Migration') . '</dt>';
+      $output .= '<dd>' . t('Migrate posts, pages, users, media files, and taxonomies from WordPress to Drupal.') . '</dd>';
+      $output .= '</dl>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_schema().
+ */
+function wordpress_migrate_schema() {
+  $schema = [];
+
+  $schema['wordpress_migrate_log'] = [
+    'description' => 'Logs WordPress migration activities.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique log entry ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'migration_type' => [
+        'description' => 'Type of migration (users, posts, pages, media, etc.)',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ],
+      'wordpress_id' => [
+        'description' => 'Original WordPress ID',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'drupal_id' => [
+        'description' => 'New Drupal ID',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ],
+      'status' => [
+        'description' => 'Migration status (success, failed, skipped)',
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+      ],
+      'message' => [
+        'description' => 'Additional message or error details',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+      'created' => [
+        'description' => 'Migration timestamp',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'migration_type' => ['migration_type'],
+      'wordpress_id' => ['wordpress_id'],
+      'status' => ['status'],
+    ],
+  ];
+
+  return $schema;
+}
+
+// Install/uninstall hooks are defined in wordpress_migrate.install.

@@ -1,0 +1,22 @@
+services:
+  wordpress_migrate.connection:
+    class: Drupal\wordpress_migrate\Service\WordPressConnection
+    arguments: ['@config.factory', '@logger.factory']
+    
+  wordpress_migrate.data_extractor:
+    class: Drupal\wordpress_migrate\Service\WordPressDataExtractor
+    arguments: ['@wordpress_migrate.connection', '@logger.factory']
+    
+  wordpress_migrate.media_processor:
+    class: Drupal\wordpress_migrate\Service\WordPressMediaProcessor
+    arguments: ['@wordpress_migrate.connection', '@file_system', '@file.repository', '@logger.factory']
+    
+  wordpress_migrate.content_processor:
+    class: Drupal\wordpress_migrate\Service\WordPressContentProcessor
+    arguments: ['@wordpress_migrate.data_extractor', '@wordpress_migrate.media_processor', '@entity_type.manager', '@logger.factory']
+    
+  wordpress_migrate.migration_form:
+    class: Drupal\wordpress_migrate\Form\WordPressMigrationForm
+    arguments: ['@wordpress_migrate.content_processor']
+    tags:
+      - { name: form, type: form }

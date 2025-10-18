@@ -24,6 +24,8 @@
         "drupal/entity_usage": "^2.0@beta",
         "drupal/http_client_manager": "^11.0",
         "drupal/metatag": "^2.1",
+        "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_tools": "^6.1",
         "drupal/paragraphs": "^1.19",
         "drupal/pathauto": "^1.13",
         "drupal/simple_oauth": "^6.0",

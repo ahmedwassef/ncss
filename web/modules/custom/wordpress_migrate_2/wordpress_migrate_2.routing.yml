@@ -1,0 +1,31 @@
+wordpress_migrate.admin:
+  path: '/admin/config/development/wordpress-migrate'
+  defaults:
+    _form: '\Drupal\wordpress_migrate\Form\WordPressMigrateSettingsForm'
+    _title: 'WordPress Migration Settings'
+  requirements:
+    _permission: 'administer wordpress migrate'
+
+wordpress_migrate.test_connection:
+  path: '/admin/config/development/wordpress-migrate/test-connection'
+  defaults:
+    _controller: '\Drupal\wordpress_migrate\Controller\WordPressMigrateController::testConnection'
+    _title: 'Test WordPress Connection'
+  requirements:
+    _permission: 'administer wordpress migrate'
+
+wordpress_migrate.preview:
+  path: '/admin/config/development/wordpress-migrate/preview'
+  defaults:
+    _controller: '\Drupal\wordpress_migrate\Controller\WordPressMigrateController::previewData'
+    _title: 'Preview WordPress Data'
+  requirements:
+    _permission: 'administer wordpress migrate'
+
+wordpress_migrate.run:
+  path: '/admin/config/development/wordpress-migrate/run'
+  defaults:
+    _controller: '\Drupal\wordpress_migrate\Controller\WordPressMigrateController::runMigration'
+    _title: 'Run WordPress Migration'
+  requirements:
+    _permission: 'administer wordpress migrate'

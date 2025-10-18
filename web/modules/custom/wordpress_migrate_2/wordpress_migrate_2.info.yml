@@ -1,0 +1,17 @@
+name: 'WordPress Migrate 2'
+type: module
+description: 'Migrate content from WordPress to Drupal 11. Supports posts, pages, users, media, and taxonomies.'
+package: 'Custom'
+core_version_requirement: ^11
+dependencies:
+  - drupal:migrate
+  - drupal:migrate_drupal
+  - drupal:field
+  - drupal:file
+  - drupal:image
+  - drupal:text
+  - drupal:user
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:media
+  - drupal:system

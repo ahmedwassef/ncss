@@ -1,0 +1,164 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for WordPress Migrate module.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\node\Entity\NodeType;
+use Drupal\taxonomy\Entity\Vocabulary;
+
+/**
+ * Implements hook_install().
+ */
+function wordpress_migrate_install() {
+  // Ensure vocabularies exist.
+  _wordpress_migrate_ensure_vocabularies();
+
+  // Ensure content types and fields exist.
+  _wordpress_migrate_ensure_content_types_and_fields();
+}
+
+/**
+ * Ensure vocabularies for categories and tags exist.
+ */
+function _wordpress_migrate_ensure_vocabularies() {
+  $vocabularies = [
+    'wordpress_categories' => [
+      'name' => 'WordPress Categories',
+      'description' => 'Categories migrated from WordPress',
+    ],
+    'wordpress_tags' => [
+      'name' => 'WordPress Tags',
+      'description' => 'Tags migrated from WordPress',
+    ],
+  ];
+
+  foreach ($vocabularies as $vid => $info) {
+    if (!Vocabulary::load($vid)) {
+      Vocabulary::create([
+        'vid' => $vid,
+        'name' => $info['name'],
+        'description' => $info['description'],
+      ])->save();
+    }
+  }
+}
+
+/**
+ * Ensure content types and required fields exist.
+ */
+function _wordpress_migrate_ensure_content_types_and_fields() {
+  $types = [
+    'wordpress_post' => 'WordPress Post',
+    'wordpress_page' => 'WordPress Page',
+  ];
+
+  foreach ($types as $type => $label) {
+    if (!NodeType::load($type)) {
+      NodeType::create([
+        'type' => $type,
+        'name' => $label,
+        'description' => 'Migrated ' . $label,
+      ])->save();
+    }
+
+    // Ensure body field storage exists.
+    if (!FieldStorageConfig::loadByName('node', 'body')) {
+      FieldStorageConfig::create([
+        'field_name' => 'body',
+        'entity_type' => 'node',
+        'type' => 'text_with_summary',
+        'cardinality' => 1,
+      ])->save();
+    }
+
+    // Attach body field to bundle if missing.
+    if (!FieldConfig::loadByName('node', $type, 'body')) {
+      FieldConfig::create([
+        'field_name' => 'body',
+        'entity_type' => 'node',
+        'bundle' => $type,
+        'label' => 'Body',
+        'required' => FALSE,
+        'settings' => [
+          'display_summary' => TRUE,
+        ],
+      ])->save();
+    }
+  }
+
+  // Ensure taxonomy reference fields for posts.
+  _wordpress_migrate_ensure_taxonomy_fields('wordpress_post');
+}
+
+/**
+ * Ensure taxonomy reference fields exist on a bundle.
+ */
+function _wordpress_migrate_ensure_taxonomy_fields($bundle) {
+  // field_categories -> wordpress_categories.
+  if (!FieldStorageConfig::loadByName('node', 'field_categories')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_categories',
+      'entity_type' => 'node',
+      'type' => 'entity_reference',
+      'settings' => [
+        'target_type' => 'taxonomy_term',
+      ],
+      'cardinality' => -1,
+    ])->save();
+  }
+  if (!FieldConfig::loadByName('node', $bundle, 'field_categories')) {
+    FieldConfig::create([
+      'field_name' => 'field_categories',
+      'entity_type' => 'node',
+      'bundle' => $bundle,
+      'label' => 'Categories',
+      'settings' => [
+        'handler' => 'default:taxonomy_term',
+        'handler_settings' => [
+          'target_bundles' => ['wordpress_categories' => 'wordpress_categories'],
+        ],
+      ],
+    ])->save();
+  }
+
+  // field_tags -> wordpress_tags.
+  if (!FieldStorageConfig::loadByName('node', 'field_tags')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_tags',
+      'entity_type' => 'node',
+      'type' => 'entity_reference',
+      'settings' => [
+        'target_type' => 'taxonomy_term',
+      ],
+      'cardinality' => -1,
+    ])->save();
+  }
+  if (!FieldConfig::loadByName('node', $bundle, 'field_tags')) {
+    FieldConfig::create([
+      'field_name' => 'field_tags',
+      'entity_type' => 'node',
+      'bundle' => $bundle,
+      'label' => 'Tags',
+      'settings' => [
+        'handler' => 'default:taxonomy_term',
+        'handler_settings' => [
+          'target_bundles' => ['wordpress_tags' => 'wordpress_tags'],
+        ],
+      ],
+    ])->save();
+  }
+}
+
+/**
+ * Add/repair bundles and fields for existing installs.
+ */
+function wordpress_migrate_update_8001() {
+  _wordpress_migrate_ensure_vocabularies();
+  _wordpress_migrate_ensure_content_types_and_fields();
+}
+
+
