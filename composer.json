@@ -14,6 +14,13 @@
             "url": "https://packages.drupal.org/8"
         }
     ],
+    "extra": {
+        "patches": {
+            "drupal/yoast_seo": {
+                "Fix PHP 8.2+ dynamic property deprecation": "patches/yoast_seo-dynamic-property-php82.patch"
+            }
+        }
+    },
     "require": {
         "composer/installers": "^2.3",
         "drupal/admin_toolbar": "^3.6",

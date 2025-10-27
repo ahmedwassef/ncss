@@ -245,3 +245,1502 @@ nav.navbar .navbar-nav .dropdown-menu {
     padding-bottom: 10px !important;
   }
 }
+
+/* ========================================
+   Forgot Password Page Styling
+   ======================================== */
+
+.forgot-password-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.forgot-password-icon {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.forgot-password-form .form-control {
+  border: 2px solid #e9ecef;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.forgot-password-form .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.forgot-password-form .btn-primary {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  border: none;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.forgot-password-form .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+  background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+}
+
+.forgot-password-form .btn-primary:active {
+  transform: translateY(0);
+}
+
+.forgot-password-form label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Auth Layout Enhancements */
+.auth-layout .back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.auth-layout .back-btn:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+html[dir="rtl"] .auth-layout .back-btn:hover {
+  transform: translateX(5px);
+}
+
+.auth-layout .back-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Card Hover Effect */
+.forgot-password-container .card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.forgot-password-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Link Hover Effects */
+.forgot-password-container a:not(.btn) {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.forgot-password-container a:not(.btn):hover {
+  transform: translateX(3px);
+  color: #084298 !important;
+}
+
+html[dir="rtl"] .forgot-password-container a:not(.btn):hover {
+  transform: translateX(-3px);
+}
+
+/* Success/Error Messages Styling */
+.forgot-password-form .messages {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .forgot-password-container {
+    padding: 15px;
+  }
+
+  .forgot-password-container .card-body {
+    padding: 2rem 1.5rem !important;
+  }
+
+  .forgot-password-icon {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .forgot-password-icon svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .title {
+    font-size: 1.5rem !important;
+  }
+
+  .auth-layout .back-btn {
+    width: 40px;
+    height: 40px;
+    top: 15px !important;
+    left: 15px !important;
+  }
+}
+
+/* RTL Support */
+html[dir="rtl"] .auth-layout .back-btn {
+  left: auto;
+  right: 30px;
+}
+
+@media (max-width: 768px) {
+  html[dir="rtl"] .auth-layout .back-btn {
+    right: 15px !important;
+  }
+}
+
+/* Loading State for Submit Button */
+.forgot-password-form .btn-primary.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.forgot-password-form .btn-primary.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   Success Message Styling
+   ======================================== */
+
+.success-card {
+  animation: successSlideUp 0.6s ease-out;
+}
+
+@keyframes successSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.success-icon-wrapper {
+  animation: successIconBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes successIconBounce {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.success-checkmark {
+  animation: checkmarkDraw 0.5s ease-out 0.3s both;
+}
+
+@keyframes checkmarkDraw {
+  from {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+}
+
+.success-card .alert-success {
+  animation: emailBadgePulse 0.6s ease-out 0.4s both;
+}
+
+@keyframes emailBadgePulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-card .info-box {
+  animation: infoBoxSlide 0.5s ease-out 0.6s both;
+}
+
+@keyframes infoBoxSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Redirect countdown alert */
+.success-card .alert-info {
+  animation: countdownSlide 0.5s ease-out 0.5s both;
+}
+
+@keyframes countdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#redirect-countdown {
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+  font-size: 1.1em;
+  color: #0d6efd;
+  animation: countdownPulse 1s ease-in-out infinite;
+}
+
+@keyframes countdownPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+    color: #084298;
+  }
+}
+
+html[dir="rtl"] .success-card .info-box {
+  animation: infoBoxSlideRTL 0.5s ease-out 0.6s both;
+}
+
+@keyframes infoBoxSlideRTL {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.success-card .btn {
+  transition: all 0.3s ease;
+}
+
+.success-card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+}
+
+.success-card .btn:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   Beautiful Drupal Messages Styling (Global)
+   ======================================== */
+
+/* Messages Container Positioning */
+.messages-container {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 1.5rem;
+}
+
+.messages-container:empty {
+  display: none;
+  margin-bottom: 0;
+}
+
+/* Ensure messages appear at top of card */
+.card-body > .messages-container {
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-body > .messages-container + .text-center {
+  margin-top: 0;
+}
+
+
+
+/* Messages wrapper */
+.messages__wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Base message styling */
+.messages {
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: messageSlideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid;
+  font-size: 1rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add icon before message */
+.messages::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: iconBounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s both;
+}
+
+@keyframes iconBounceIn {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Animated background gradient */
+.messages::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s ease-in-out 0.5s;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Status messages (success) */
+.messages--status {
+  background: linear-gradient(135deg, rgba(25, 135, 84, 0.1) 0%, rgba(25, 135, 84, 0.05) 100%);
+  border-color: #198754;
+  color: #146c43;
+  border-left: 5px solid #198754;
+}
+
+.messages--status::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23198754' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+}
+
+/* Error messages */
+.messages--error {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(220, 53, 69, 0.05) 100%);
+  border-color: #dc3545;
+  color: #842029;
+  border-left: 5px solid #dc3545;
+}
+
+.messages--error::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23dc3545' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z'/%3E%3C/svg%3E");
+}
+
+/* Warning messages */
+.messages--warning {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
+  border-color: #ffc107;
+  color: #664d03;
+  border-left: 5px solid #ffc107;
+}
+
+.messages--warning::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23ffc107' viewBox='0 0 16 16'%3E%3Cpath d='M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z'/%3E%3C/svg%3E");
+}
+
+/* Info messages */
+.messages--info {
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(13, 110, 253, 0.05) 100%);
+  border-color: #0d6efd;
+  color: #084298;
+  border-left: 5px solid #0d6efd;
+}
+
+.messages--info::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%230d6efd' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E");
+}
+
+/* Style the placeholder (username/email) */
+.messages em.placeholder {
+  font-style: normal;
+  font-weight: 700;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid currentColor;
+  display: inline-block;
+  margin: 0 0.25rem;
+  animation: placeholderPulse 1s ease-in-out 0.5s;
+}
+
+@keyframes placeholderPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px currentColor;
+  }
+}
+
+/* Message content styling */
+.messages > div,
+.messages__content {
+  flex: 1;
+  animation: textFadeIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide down animation */
+@keyframes messageSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Forgot password page specific styling */
+.forgot-password-container .messages {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password-form .messages:first-child {
+  margin-top: 0;
+}
+
+
+
+
+
+/* Multiple messages styling */
+.messages__wrapper .messages + .messages {
+  margin-top: 1rem;
+}
+
+/* RTL support for messages */
+html[dir="rtl"] .messages {
+  border-left: none;
+  border-right: 5px solid;
+}
+
+html[dir="rtl"] .messages--status {
+  border-right-color: #198754;
+}
+
+html[dir="rtl"] .messages--error {
+  border-right-color: #dc3545;
+}
+
+html[dir="rtl"] .messages--warning {
+  border-right-color: #ffc107;
+}
+
+html[dir="rtl"] .messages--info {
+  border-right-color: #0d6efd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .messages {
+    padding: 1rem;
+    font-size: 0.95rem;
+    gap: 0.75rem;
+  }
+
+  .messages::before {
+    width: 20px;
+    height: 20px;
+  }
+
+  .messages em.placeholder {
+    display: block;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+}
+
+/* Print styles */
+@media print {
+
+  .messages {
+    border: 2px solid #000;
+    box-shadow: none;
+  }
+}
+
+/* Accessibility: Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .messages,
+  .messages::before,
+  .messages::after,
+  .messages em.placeholder,
+  .messages > div {
+    animation: none !important;
+  }
+}
+
+/* Focus styles for accessibility */
+.messages:focus-within {
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Beautiful Local Task Buttons (Tabs)
+   ======================================== */
+
+/* Container for local tasks */
+.tabs,
+ul.tabs,
+nav.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  border: none;
+  background: transparent;
+}
+
+/* Individual task item */
+.local-task-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Task wrapper for positioning */
+.local-task-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Base button styling */
+.local-task-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Shimmer effect on buttons */
+.local-task-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.local-task-btn:hover::before {
+  left: 100%;
+}
+
+/* Active button state */
+.local-task-btn--active {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  color: #ffffff;
+  border-color: #0d6efd;
+  box-shadow: 0 4px 16px rgba(13, 110, 253, 0.4);
+  transform: translateY(-2px);
+}
+
+.local-task-btn--active:hover {
+  background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.5);
+  transform: translateY(-3px);
+}
+
+/* Inactive button state */
+.local-task-btn--inactive {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  border-color: #dee2e6;
+}
+
+.local-task-btn--inactive:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  color: #212529;
+  border-color: #adb5bd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Active indicator line */
+.local-task-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #0d6efd, transparent);
+  border-radius: 2px;
+  animation: indicatorPulse 2s ease-in-out infinite;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% {
+    opacity: 1;
+    width: 60%;
+  }
+  50% {
+    opacity: 0.7;
+    width: 80%;
+  }
+}
+
+/* Icon styling (if icons are added) */
+.local-task-btn svg,
+.local-task-btn i {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.local-task-btn:hover svg,
+.local-task-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* Badge for counts (if needed) */
+.local-task-btn .badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+.local-task-btn--active .badge {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Focus states for accessibility */
+.local-task-btn:focus,
+.local-task-btn:focus-visible {
+  outline: 3px solid rgba(13, 110, 253, 0.5);
+  outline-offset: 3px;
+  box-shadow: 0 4px 16px rgba(13, 110, 253, 0.3);
+}
+
+/* Active state animation */
+.local-task-item--active .local-task-btn {
+  animation: taskActivate 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes taskActivate {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1) translateY(-2px);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tabs,
+  ul.tabs,
+  nav.tabs {
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .local-task-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 0.625rem;
+  }
+
+  .local-task-indicator {
+    height: 2px;
+  }
+}
+
+/* Small screens - stack vertically if needed */
+@media (max-width: 576px) {
+  .tabs,
+  ul.tabs,
+  nav.tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .local-task-item {
+    width: 100%;
+  }
+
+  .local-task-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* RTL Support */
+html[dir="rtl"] .local-task-btn svg,
+html[dir="rtl"] .local-task-btn i {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .local-task-btn .badge {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+/* Print styles */
+@media print {
+  .local-task-btn::before,
+  .local-task-indicator {
+    display: none;
+  }
+
+  .local-task-btn {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .local-task-btn,
+  .local-task-btn::before,
+  .local-task-indicator,
+  .local-task-item--active .local-task-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Loading state (optional) */
+.local-task-btn.loading {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+}
+
+.local-task-btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: btnSpinner 0.8s linear infinite;
+  right: 1rem;
+}
+
+@keyframes btnSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Group styling for primary/secondary tabs */
+.tabs--primary {
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.tabs--secondary {
+  margin-top: 0.5rem;
+}
+
+.tabs--secondary .local-task-btn {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Dropdown button variant (if needed) */
+.local-task-btn--dropdown {
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+.local-task-btn--dropdown::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform 0.3s ease;
+}
+
+.local-task-btn--dropdown:hover::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Special styling for auth pages */
+.page-user-password .tabs,
+.page-user-login .tabs,
+.page-user-register .tabs {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* ========================================
+   Professional Status Messages Design
+   ======================================== */
+
+.messages-container {
+  position: relative;
+  z-index: 1000;
+  margin: 1.5rem 0;
+}
+
+/* Base Alert Styling */
+.message-alert {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  animation: messageSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
+}
+
+.message-alert:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Icon Container */
+.message-alert__icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.message-alert__icon-wrapper {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: iconBounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s both;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes iconBounceIn {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.15) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.message-alert__icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Content Container */
+.message-alert__content {
+  flex: 1;
+  min-width: 0;
+  animation: contentFadeIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message-alert__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.message-alert__messages {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.message-alert__message {
+  margin: 0.25rem 0;
+}
+
+.message-alert__message:first-child {
+  margin-top: 0;
+}
+
+.message-alert__message:last-child {
+  margin-bottom: 0;
+}
+
+.message-alert__divider {
+  height: 1px;
+  margin: 0.75rem 0;
+  opacity: 0.3;
+}
+
+/* Close Button */
+.message-alert__close {
+  position: relative;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+  animation: closeBtnFadeIn 0.6s ease-out 0.4s both;
+}
+
+@keyframes closeBtnFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.message-alert__close:hover {
+  background: rgba(0, 0, 0, 0.15);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.message-alert__close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+.message-alert__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Background Pattern */
+.message-alert__pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  opacity: 0.05;
+  pointer-events: none;
+  background: radial-gradient(circle at center, currentColor 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: patternFloat 20s linear infinite;
+}
+
+@keyframes patternFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50px, -50px) rotate(360deg);
+  }
+}
+
+/* Success Message Styling */
+.message-alert--status {
+  background: linear-gradient(135deg, rgba(25, 135, 84, 0.08) 0%, rgba(25, 135, 84, 0.03) 100%);
+  border-color: #198754;
+  color: #0f5132;
+}
+
+.message-alert--status .message-alert__icon-wrapper {
+  background: linear-gradient(135deg, #198754 0%, #146c43 100%);
+  color: white;
+}
+
+.message-alert--status .message-alert__divider {
+  background: #198754;
+}
+
+.message-alert--status .message-alert__close {
+  color: #0f5132;
+}
+
+/* Warning Message Styling */
+.message-alert--warning {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 193, 7, 0.03) 100%);
+  border-color: #ffc107;
+  color: #664d03;
+}
+
+.message-alert--warning .message-alert__icon-wrapper {
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  color: #000;
+}
+
+.message-alert--warning .message-alert__divider {
+  background: #ffc107;
+}
+
+.message-alert--warning .message-alert__close {
+  color: #664d03;
+}
+
+/* Error Message Styling */
+.message-alert--error {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.08) 0%, rgba(220, 53, 69, 0.03) 100%);
+  border-color: #dc3545;
+  color: #842029;
+}
+
+.message-alert--error .message-alert__icon-wrapper {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.message-alert--error .message-alert__divider {
+  background: #dc3545;
+}
+
+.message-alert--error .message-alert__close {
+  color: #842029;
+}
+
+/* Info Message Styling */
+.message-alert--info {
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.08) 0%, rgba(13, 110, 253, 0.03) 100%);
+  border-color: #0d6efd;
+  color: #084298;
+}
+
+.message-alert--info .message-alert__icon-wrapper {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  color: white;
+}
+
+.message-alert--info .message-alert__divider {
+  background: #0d6efd;
+}
+
+.message-alert--info .message-alert__close {
+  color: #084298;
+}
+
+/* Sticky Messages (for important alerts) */
+.message-alert--sticky {
+  position: sticky;
+  top: 20px;
+  z-index: 1050;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .message-alert {
+    padding: 1rem;
+    gap: 0.75rem;
+    border-radius: 0.75rem;
+  }
+
+  .message-alert__icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .message-alert__icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .message-alert__title {
+    font-size: 1rem;
+  }
+
+  .message-alert__messages {
+    font-size: 0.9rem;
+  }
+
+  .message-alert__close {
+    width: 28px;
+    height: 28px;
+  }
+
+  .message-alert__pattern {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* RTL Support */
+html[dir="rtl"] .message-alert__content {
+  animation: contentFadeInRTL 0.6s ease-out 0.3s both;
+}
+
+@keyframes contentFadeInRTL {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+html[dir="rtl"] .message-alert__close {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+html[dir="rtl"] @keyframes messageSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .message-alert__close,
+  .message-alert__pattern {
+    display: none;
+  }
+
+  .message-alert {
+    box-shadow: none;
+    border: 2px solid currentColor;
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .message-alert,
+  .message-alert__icon-wrapper,
+  .message-alert__content,
+  .message-alert__close,
+  .message-alert__pattern {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Focus States */
+.message-alert__close:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty State */
+.messages-container:empty {
+  display: none;
+}
+
+/* Resend link hover effect */
+#resend-email-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#resend-email-link:hover {
+  color: #084298 !important;
+  transform: translateX(3px);
+}
+
+html[dir="rtl"] #resend-email-link:hover {
+  transform: translateX(-3px);
+}
+
+#resend-email-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: #0d6efd;
+  transition: width 0.3s ease;
+}
+
+#resend-email-link:hover::after {
+  width: 100%;
+}
+
+/* Success card shake on load (subtle) */
+.success-card:hover {
+  animation: none;
+}
+
+/* Info box list styling */
+.success-card .info-box ul li {
+  position: relative;
+  padding-left: 0.5rem;
+  animation: listItemFadeIn 0.3s ease-out backwards;
+}
+
+.success-card .info-box ul li:nth-child(1) {
+  animation-delay: 0.7s;
+}
+
+.success-card .info-box ul li:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.success-card .info-box ul li:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.success-card .info-box ul li:nth-child(4) {
+  animation-delay: 1s;
+}
+
+@keyframes listItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+html[dir="rtl"] .success-card .info-box ul li {
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+
+@keyframes listItemFadeInRTL {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+html[dir="rtl"] .success-card .info-box ul li {
+  animation: listItemFadeInRTL 0.3s ease-out backwards;
+}
+
+/* Responsive adjustments for success message */
+@media (max-width: 768px) {
+  .success-icon-wrapper {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .success-icon-wrapper svg {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .success-card .title {
+    font-size: 1.5rem !important;
+  }
+
+  .success-card .card-body {
+    padding: 2rem 1.5rem !important;
+  }
+}

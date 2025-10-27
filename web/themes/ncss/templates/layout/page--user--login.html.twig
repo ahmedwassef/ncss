@@ -18,20 +18,19 @@
           </div>
           {{ page.content }}
 
+          <div class="mt-4 text-center">
+            <a href="/user/password" class="text-decoration-none d-inline-flex align-items-center gap-2 fw-semibold" style="color: #0d6efd; transition: all 0.3s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+              </svg>
+              {{ "Forgot your password?"|t }}
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-  <div class="">
-    <div class="text-center" style="width: 400px;">
-      <img src="/themes/ncss/frontend/img/nafaz.svg" width="100" height="100" alt="{{ "Nafaz"|t }}">
-      <p class="title">{{ "Unified National Access"|t }}</p>
-      <p class="description text-danger">{{ "Users within the Kingdom of Saudi Arabia are requested to log in for the first time through the National Access Platform"|t }}</p>
-      <a href="#" class="btn btn-primary w-100 btn-lg">
-        {{ "Login to Nafaz platform"|t }}
-      </a>
-    </div>
-  </div>
-</div>
+ </div>
 
 {% include '@ncss/layout/footer.html.twig' %}

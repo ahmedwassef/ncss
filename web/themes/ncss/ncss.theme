@@ -1,5 +1,68 @@
 <?php
 
+/**
+ * @file
+ * Functions to support theming in the NCSS theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function ncss_preprocess_page(&$variables) {
+  // Get the current route name.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Add body classes for specific user pages.
+  if (in_array($route_name, ['user.pass', 'user.reset', 'user.reset.login'])) {
+    $variables['attributes']['class'][] = 'page-user-password';
+  }
+
+  // Move messages to be available separately from content.
+  if (isset($variables['page']['content']['messages'])) {
+    $variables['messages'] = $variables['page']['content']['messages'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for status_messages.
+ */
+function ncss_preprocess_status_messages(&$variables) {
+  // Get current route.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Don't show password reset messages on homepage.
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+
+  if ($is_front && isset($variables['message_list']['status'])) {
+    foreach ($variables['message_list']['status'] as $key => $message) {
+      $message_string = (string) $message;
+      // Remove password reset messages from homepage.
+      if (stripos($message_string, 'password') !== FALSE ||
+          stripos($message_string, 'valid account') !== FALSE) {
+        unset($variables['message_list']['status'][$key]);
+      }
+    }
+
+    // If no status messages left, remove the status type.
+    if (empty($variables['message_list']['status'])) {
+      unset($variables['message_list']['status']);
+    }
+
+    // Add custom submit handler to redirect to login page.
+    $form['#submit'][] = 'ncss_user_pass_submit';
+  }
+}
+
+/**
+ * Custom submit handler for password reset form.
+ */
+function ncss_user_pass_submit(&$form, FormStateInterface $form_state) {
+  // Redirect to login page instead of homepage.
+  $form_state->setRedirect('user.login');
+}
+
 
 function ncss_preprocess(&$variables, $hook)
 {

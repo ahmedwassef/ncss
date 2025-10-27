@@ -36,19 +36,20 @@
 <html{{ html_attributes }}>
   <head>
     <head-placeholder token="{{ placeholder_token|raw }}">
+    </head-placeholder>
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token|raw }}">
-
+    </css-placeholder>
     <js-placeholder token="{{ placeholder_token|raw }}">
+    </js-placeholder>
   </head>
   <body{{ attributes.addClass(body_classes) }}>
 
     {{ page_top }}
-
     {{ page }}
-
     {{ page_bottom }}
-    <div style="display: none" id="sound-wrapper"> <audio id="audio"></audio></div>
+
+
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"
@@ -57,6 +58,7 @@
       <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
               integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
               async></script>
+    </js-bottom-placeholder>
 
   </body>
 </html>

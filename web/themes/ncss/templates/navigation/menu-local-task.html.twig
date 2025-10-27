@@ -16,12 +16,41 @@
  * @see template_preprocess_menu_local_task()
  */
 #}
-{%
-  set classes = [
-    'nav-link',
-    is_active ? 'active',
-    item.url.getOption('attributes').class ? item.url.getOption('attributes').class | join(' '),
-    'nav-link-' ~ item.url.toString() | clean_class,
-  ]
-%}
-<li{{ attributes.addClass(is_active ? 'active', 'nav-item') }}>{{ link(item.text, item.url, {'class': classes}) }}</li>
+{% if item.url %}
+  {%
+    set classes = [
+      'local-task-btn',
+      is_active ? 'local-task-btn--active' : 'local-task-btn--inactive',
+      item.url.getOption('attributes').class ? item.url.getOption('attributes').class | join(' '),
+      'local-task-btn--' ~ item.url.toString() | clean_class,
+    ]
+  %}
+  <li{{ attributes.addClass('local-task-item', is_active ? 'local-task-item--active') }}>
+    <div class="btn  m-2 text-white">
+      {{ link(item.text, item.url, {'class': classes}) }}
+      {% if is_active %}
+        <span class="local-task-indicator"></span>
+      {% endif %}
+    </div>
+  </li>
+{% elseif link %}
+  <li{{ attributes.addClass('local-task-item', is_active ? 'local-task-item--active') }}>
+    <div class="btn  m-2 text-white">
+      {{ link }}
+      {% if is_active %}
+        <span class="local-task-indicator"></span>
+      {% endif %}
+    </div>
+  </li>
+{% else %}
+  <li{{ attributes.addClass('local-task-item', is_active ? 'local-task-item--active') }}>
+    <div class="btn  m-2 text-white">
+      <span class="local-task-btn {{ is_active ? 'local-task-btn--active' : 'local-task-btn--inactive' }}">
+        {{ item.text }}
+      </span>
+      {% if is_active %}
+        <span class="local-task-indicator"></span>
+      {% endif %}
+    </div>
+  </li>
+{% endif %}

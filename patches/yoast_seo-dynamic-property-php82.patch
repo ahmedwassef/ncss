@@ -1,0 +1,18 @@
+diff --git a/src/YoastSeoManager.php b/src/YoastSeoManager.php
+index 1234567..abcdefg 100644
+--- a/src/YoastSeoManager.php
++++ b/src/YoastSeoManager.php
+@@ -20,6 +20,13 @@ use Drupal\Core\Url;
+  */
+ class YoastSeoManager {
+
++  /**
++   * The Yoast SEO field manager service.
++   *
++   * @var \Drupal\yoast_seo\YoastSeoFieldManager
++   */
++  protected $yoast_seo_field_manager;
++
+   /**
+    * The module handler service.
+    *
