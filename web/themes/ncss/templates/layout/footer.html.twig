@@ -37,9 +37,8 @@
 </section>
 <footer>
   <div class="container">
-    {% if page.footer_first %}
-      {{ page.footer_first }}
-
+     {% if page.footer %}
+      {{ page.footer}}
     {% endif %}
      <div class="copyrights pb-5">{{ 'All rights reserved © '|t }} {{ "now"|date("Y") }}</div>
   </div>

@@ -279,28 +279,22 @@ nav.navbar .navbar-nav .dropdown-menu {
 }
 
 .forgot-password-form .form-control:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
-}
+ }
 
 .forgot-password-form .btn-primary {
   padding: 0.75rem 2rem;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 0.5rem;
-  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-  border: none;
-  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
-  transition: all 0.3s ease;
+   border: none;
+   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .forgot-password-form .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
-  background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
-}
+ }
 
 .forgot-password-form .btn-primary:active {
   transform: translateY(0);
@@ -1633,6 +1627,500 @@ html[dir="rtl"] @keyframes messageSlideOut {
 /* Empty State */
 .messages-container:empty {
   display: none;
+}
+
+/* ========================================
+   Beautiful Empty State Design
+   ======================================== */
+
+.empty-state {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  animation: emptyStateFadeIn 0.6s ease-out;
+}
+
+@keyframes emptyStateFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.empty-state__container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 500px;
+  animation: containerSlideUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes containerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Icon/Illustration */
+.empty-state__icon {
+  margin: 0 auto 2rem;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.empty-state__illustration {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+}
+
+/* Animated SVG Shapes */
+.empty-state__shape {
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+}
+
+.empty-state__shape--1 {
+  animation-name: shapeScale1;
+  animation-delay: 0s;
+}
+
+.empty-state__shape--2 {
+  animation-name: shapeScale2;
+  animation-delay: 0.2s;
+}
+
+.empty-state__shape--3 {
+  animation-name: shapeScale3;
+  animation-delay: 0.4s;
+}
+
+.empty-state__shape--4,
+.empty-state__shape--5 {
+  animation-name: shapeSlideDown;
+  animation-delay: 0.6s;
+}
+
+.empty-state__shape--6,
+.empty-state__shape--7,
+.empty-state__shape--8 {
+  animation-name: shapeFade;
+  animation-delay: 0.8s;
+}
+
+@keyframes shapeScale1 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+}
+
+@keyframes shapeScale2 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.4;
+  }
+}
+
+@keyframes shapeScale3 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
+}
+
+@keyframes shapeSlideDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes shapeFade {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Content */
+.empty-state__content {
+  margin-bottom: 2rem;
+  animation: contentFadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.empty-state__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.empty-state__description {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Actions */
+.empty-state__actions {
+  animation: actionsFadeIn 0.8s ease-out 0.6s both;
+}
+
+@keyframes actionsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.empty-state__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #1b8354 0%, #146c43 100%);
+  color: white;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 16px rgba(27, 131, 84, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.empty-state__btn:hover {
+  background: linear-gradient(135deg, #146c43 0%, #0f5132 100%);
+  box-shadow: 0 6px 24px rgba(27, 131, 84, 0.4);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.empty-state__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 12px rgba(27, 131, 84, 0.3);
+}
+
+.empty-state__btn svg {
+  transition: transform 0.3s ease;
+}
+
+.empty-state__btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Decorative Background Elements */
+.empty-state__decoration {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.empty-state__decoration--1 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #1b8354, #146c43);
+  top: -150px;
+  left: -150px;
+  animation: decorationFloat1 8s ease-in-out infinite;
+}
+
+.empty-state__decoration--2 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #1b8354, #0f5132);
+  bottom: -100px;
+  right: -100px;
+  animation: decorationFloat2 10s ease-in-out infinite;
+}
+
+.empty-state__decoration--3 {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #20c997, #1b8354);
+  top: 50%;
+  right: -75px;
+  animation: decorationFloat3 12s ease-in-out infinite;
+}
+
+@keyframes decorationFloat1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(30px, 30px) rotate(180deg);
+  }
+}
+
+@keyframes decorationFloat2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-20px, -20px) rotate(-180deg);
+  }
+}
+
+@keyframes decorationFloat3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-15px, 15px) scale(1.1);
+  }
+}
+
+/* Variant Styles for Different Content Types */
+.empty-state--events {
+  background: linear-gradient(135deg, #e8f5f0 0%, #d1f4e0 100%);
+}
+
+.empty-state--news {
+  background: linear-gradient(135deg, #e8f5f0 0%, #d4f1e8 100%);
+}
+
+.empty-state--research {
+  background: linear-gradient(135deg, #f0f9f7 0%, #dff5ed 100%);
+}
+
+.empty-state--services {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+}
+
+/* Compact Version */
+.empty-state--compact {
+  min-height: 250px;
+  padding: 2rem 1.5rem;
+}
+
+.empty-state--compact .empty-state__icon {
+  margin-bottom: 1rem;
+}
+
+.empty-state--compact .empty-state__illustration {
+  width: 120px;
+  height: 120px;
+}
+
+.empty-state--compact .empty-state__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state--compact .empty-state__description {
+  font-size: 0.9rem;
+}
+
+.empty-state--compact .empty-state__content {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .empty-state {
+    min-height: 350px;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .empty-state__illustration {
+    width: 150px;
+    height: 150px;
+  }
+
+  .empty-state__title {
+    font-size: 1.5rem;
+  }
+
+  .empty-state__description {
+    font-size: 0.95rem;
+  }
+
+  .empty-state__btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .empty-state__decoration--1,
+  .empty-state__decoration--2,
+  .empty-state__decoration--3 {
+    opacity: 0.05;
+  }
+}
+
+@media (max-width: 576px) {
+  .empty-state {
+    min-height: 300px;
+    padding: 1.5rem 1rem;
+  }
+
+  .empty-state__illustration {
+    width: 120px;
+    height: 120px;
+  }
+
+  .empty-state__title {
+    font-size: 1.25rem;
+  }
+
+  .empty-state__description {
+    font-size: 0.9rem;
+  }
+
+  .empty-state__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* RTL Support */
+html[dir="rtl"] .empty-state__decoration--1 {
+  left: auto;
+  right: -150px;
+}
+
+html[dir="rtl"] .empty-state__decoration--2 {
+  right: auto;
+  left: -100px;
+}
+
+html[dir="rtl"] .empty-state__decoration--3 {
+  right: auto;
+  left: -75px;
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  .empty-state {
+    background: linear-gradient(135deg, #1a1d20 0%, #2d3748 100%);
+  }
+
+  .empty-state__title {
+    color: #f8f9fa;
+  }
+
+  .empty-state__description {
+    color: #adb5bd;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .empty-state,
+  .empty-state__container,
+  .empty-state__icon,
+  .empty-state__content,
+  .empty-state__actions,
+  .empty-state__shape,
+  .empty-state__decoration {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .empty-state__icon {
+    transform: translateY(0) !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .empty-state {
+    background: white;
+    box-shadow: none;
+    border: 1px solid #dee2e6;
+  }
+
+  .empty-state__decoration,
+  .empty-state__actions {
+    display: none;
+  }
+}
+
+/* Loading State (Optional) */
+.empty-state--loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.empty-state--loading .empty-state__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 3px solid rgba(27, 131, 84, 0.3);
+  border-radius: 50%;
+  border-top-color: #1b8354;
+  animation: emptyStateSpinner 0.8s linear infinite;
+}
+
+@keyframes emptyStateSpinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Resend link hover effect */

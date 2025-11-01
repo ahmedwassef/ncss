@@ -275,5 +275,15 @@ function ncss_preprocess_header(&$variables) {
 
 }
 
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function ncss_preprocess_views_view(&$variables) {
+  // Get current language direction
+  $language = \Drupal::languageManager()->getCurrentLanguage();
+  $variables['is_rtl'] = $language->getDirection() === 'rtl';
+  $variables['lang_direction'] = $language->getDirection();
+}
+
 
 
