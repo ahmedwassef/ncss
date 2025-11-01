@@ -68,7 +68,7 @@
 #}
 
 <div id="hero" class="index text-white">
-  <div class="swiper hero-slider">
+  <div class="swiper hero-slider" data-rtl="{{ is_rtl ? 'true' : 'false' }}" dir="{{ lang_direction|default('ltr') }}">
     <div class="swiper-wrapper">
       {% if rows -%}
         {{ rows }}
@@ -77,12 +77,20 @@
 
     <div class="swiper-button-next">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.5 9L7.5 6L4.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        {% if is_rtl %}
+          <path d="M7.5 9L4.5 6L7.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        {% else %}
+          <path d="M4.5 9L7.5 6L4.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        {% endif %}
       </svg>
     </div>
     <div class="swiper-button-prev">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.5 9L4.5 6L7.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        {% if is_rtl %}
+          <path d="M4.5 9L7.5 6L4.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        {% else %}
+          <path d="M7.5 9L4.5 6L7.5 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        {% endif %}
       </svg>
     </div><!-- Pagination -->
     <div class="swiper-pagination"></div>
