@@ -24,21 +24,22 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0) }}
+{{ menus.menu_links(items, attributes, 0, is_rtl|default(false)) }}
 
-{% macro menu_links(items, attributes, menu_level) %}
+{% macro menu_links(items, attributes, menu_level, is_rtl) %}
   {% import _self as menus %}
   {% if items %}
     {% set level_class = 'menu__level--' ~ menu_level %}
+    {% set dir_class = is_rtl ? 'menu__rtl' : 'menu__ltr' %}
     {% if menu_level == 0 %}
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 menu__level {{ level_class }}">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 menu__level {{ level_class }} {{ dir_class }}" dir="{{ is_rtl ? 'rtl' : 'ltr' }}">
     {% else %}
-      <ul class="dropdown-menu menu__level {{ level_class }}">
+      <ul class="dropdown-menu menu__level {{ level_class }} {{ dir_class }}">
     {% endif %}
     {% for item in items %}
       {% set has_children = item.below|length > 0 %}
       {% set classes = [
-        menu_level == 0 ? 'nav-item' : 'dropdown-item',
+        menu_level == 0 ? 'nav-item' : '',
         has_children ? 'menu__item--has-children' : '',
         'menu__item',
         'menu__item--level-' ~ menu_level,
@@ -55,6 +56,7 @@
           has_children ? 'dropdown-toggle' : '',
           'menu__link',
           'menu__link--level-' ~ menu_level,
+          has_children and menu_level > 0 ? 'menu__link--submenu' : '',
           item.url.getOption('attributes').class ? item.url.getOption('attributes').class | join(' '),
           'nav-link-' ~ item.url.toString() | clean_class,
         ] %}
@@ -66,7 +68,7 @@
             'aria-haspopup': 'true',
             'role': 'button'
           }) }}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, is_rtl) }}
         {% else %}
           {{ link(item.title, item.url, {'class': link_classes}) }}
         {% endif %}
