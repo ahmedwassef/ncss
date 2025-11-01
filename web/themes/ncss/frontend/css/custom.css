@@ -199,6 +199,118 @@
   color: #0d6efd;
 }
 
+/* ========================================
+   Breadcrumb RTL/LTR Support
+   ======================================== */
+.breadcrumb {
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+/* LTR Breadcrumb */
+.breadcrumb--ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+.breadcrumb--ltr .breadcrumb-item + .breadcrumb-item::before {
+  float: left;
+  padding-right: 0.5rem;
+  padding-left: 0;
+}
+
+.breadcrumb--ltr .breadcrumb-item {
+  padding-left: 0;
+}
+
+.breadcrumb--ltr .breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem;
+}
+
+/* RTL Breadcrumb */
+.breadcrumb--rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.breadcrumb--rtl .breadcrumb-item + .breadcrumb-item::before {
+  float: right;
+  padding-left: 0.5rem;
+  padding-right: 0;
+}
+
+.breadcrumb--rtl .breadcrumb-item {
+  padding-right: 0;
+}
+
+.breadcrumb--rtl .breadcrumb-item + .breadcrumb-item {
+  padding-right: 0.5rem;
+  padding-left: 0;
+}
+
+/* Breadcrumb link styles */
+.breadcrumb-item a {
+  color: #6c757d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.breadcrumb-item a:hover,
+.breadcrumb-item a:focus {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #212529;
+  font-weight: 600;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #6c757d;
+  opacity: 0.6;
+}
+
+/* Responsive breadcrumb */
+@media (max-width: 768px) {
+  .breadcrumb {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    padding-right: 0.35rem;
+    padding-left: 0.35rem;
+  }
+
+  .breadcrumb--ltr .breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.35rem;
+  }
+
+  .breadcrumb--rtl .breadcrumb-item + .breadcrumb-item {
+    padding-right: 0.35rem;
+  }
+}
+
+/* Dark mode breadcrumb support (optional) */
+@media (prefers-color-scheme: dark) {
+  .breadcrumb-item a {
+    color: #adb5bd;
+  }
+
+  .breadcrumb-item a:hover,
+  .breadcrumb-item a:focus {
+    color: #6ea8fe;
+  }
+
+  .breadcrumb-item.active {
+    color: #f8f9fa;
+  }
+}
+
 /* Top level dropdown arrow */
 .menu__level--0 .dropdown-toggle::after {
   margin-left: 0.5rem;

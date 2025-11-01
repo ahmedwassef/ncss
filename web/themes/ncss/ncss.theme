@@ -295,5 +295,16 @@ function ncss_preprocess_menu(&$variables) {
   $variables['lang_direction'] = $language->getDirection();
 }
 
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function ncss_preprocess_breadcrumb(&$variables) {
+  // Get current language direction
+  $language = \Drupal::languageManager()->getCurrentLanguage();
+  $variables['is_rtl'] = $language->getDirection() === 'rtl';
+  $variables['lang_direction'] = $language->getDirection();
+  $variables['breadcrumb_separator'] = $language->getDirection() === 'rtl' ? '‹' : '›';
+}
+
 
 

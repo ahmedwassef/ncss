@@ -5,20 +5,28 @@
  *
  * Available variables:
  * - breadcrumb: Breadcrumb trail items.
+ * - is_rtl: Boolean indicating if current language is RTL.
+ * - lang_direction: String 'rtl' or 'ltr'.
+ * - breadcrumb_separator: The separator character based on direction.
  */
 #}
 {{ attach_library('ncss/breadcrumb') }}
 
 {% if breadcrumb %}
-  <nav role="navigation" aria-label="breadcrumb">
-    <ol class="breadcrumb">
+  {% set breadcrumb_classes = [
+    'breadcrumb',
+    is_rtl ? 'breadcrumb--rtl' : 'breadcrumb--ltr',
+  ] %}
+
+  <nav role="navigation" aria-label="{{ is_rtl ? 'مسار التنقل' : 'breadcrumb' }}" dir="{{ lang_direction|default('ltr') }}">
+    <ol class="{{ breadcrumb_classes|join(' ') }}" style="--bs-breadcrumb-divider: '{{ breadcrumb_separator|default('›') }}';">
     {% for item in breadcrumb %}
       {% if item.url %}
         <li class="breadcrumb-item">
           <a href="{{ item.url }}">{{ item.text }}</a>
         </li>
       {% else %}
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item active" aria-current="page">
           {{ item.text }}
         </li>
       {% endif %}
