@@ -35,6 +35,7 @@
 
 {% set node = row._entity %}
 
+
 {% if node.field_img|length %}
   {% set media = node.field_img.0.entity %}
   {% set image_file = media.field_media_image.entity %}
@@ -45,11 +46,19 @@
   {% endif %}
 {% endif %}
 
+{% if not uri %}
+  {% set   uri = directory_root ~ '/themes/ncss/frontend/img/default-image.jpeg' %}
+  {% set alt = 'Default image' %}
+
+  {% else %}
+    {% set uri =  (uri|image_style('media_library')) %}
+{% endif %}
+
 <div class="col-12 col-sm-6 col-lg-4 mb-3">
   <a href="{{ fields.view_node.content }}" class="link-underline link-underline-opacity-0">
     <div class="single-news-card">
 {#      <span class="single-news-card-tag">حدث</span>#}
-          <img src="{{ uri|image_style('media_library') }}" alt="{{ alt|e }}" loading="lazy"  class="single-news-card-img">
+          <img src="{{ uri }}" alt="{{ alt|e }}" loading="lazy"  class="single-news-card-img">
       <p class="single-news-card-title mt-3">{{ fields.title.content }}  </p>
         <p>
           {{ fields.created.content }}

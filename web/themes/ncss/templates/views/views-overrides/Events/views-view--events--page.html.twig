@@ -70,13 +70,13 @@
 
 
 <div class="container">
-  <h1 class="page-heading">من قلب الحدث: أخبار وفعاليات  المركز</h1>
+  <h1 class="page-heading">{{ 'From the Heart of the Event: News and Activities of the Center'|t }}</h1>
   <p class="page-description pb-5">
-    ابقَ على اطلاع دائم بأحدث الأخبار، الفعاليات، والإعلانات الرسمية من المركز الوطني
-    للدراسات والبحوث الاجتماعية. ننقل لك كل ما يدور خلف الكواليس من دراسات جديدة، شراكات مثمرة، ومبادرات وطنية تُحدث
-    الأثر وتُعبّر عن نبض المجتمع السعودي. تابع المستجدات أولاً بأول وكن جزءًا من الحراك المعرفي والاجتماعي
-    المتجدد.
+    {{ 'Stay constantly updated with the latest news, events, and official announcements from the National Center
+  for Social Studies and Research. We bring you everything happening behind the scenes — from new studies and fruitful partnerships to national initiatives that create impact and reflect the pulse of Saudi society.
+  Follow the latest developments and be part of the ever-evolving intellectual and social movement.'|t }}
   </p>
+
 </div>
 <div class="container my-5">
   <div class="d-flex flex-column gap-3 mb-3 flex-md-row justify-content-between align-items-center">
@@ -110,6 +110,7 @@
     {% endif %}
 
   </div>
+  {{ pager }}
 </div>
 
 
