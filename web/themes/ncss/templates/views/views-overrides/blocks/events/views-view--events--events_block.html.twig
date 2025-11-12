@@ -68,7 +68,7 @@
 #}
 
 
-<div class="mb-3"><h6 class="section-subtitle"> {{ "Upcoming Events"|t }}</h6></div>
+<div class="mb-3"><h2 class="section-subtitle"> {{ "Upcoming Events"|t }}</h2></div>
 <div class="home-upcoming-events-wrapper d-flex flex-column gap-3">
 
   {% if rows -%}
@@ -101,9 +101,9 @@
 
         {# Content #}
         <div class="empty-state__content">
-          <h3 class="empty-state__title">
+          <b class="empty-state__title">
             {{ "No Upcoming Events"|t }}
-          </h3>
+          </b>
           <p class="empty-state__description">
             {{ "There are no events scheduled at the moment. Check back soon for exciting upcoming events and activities."|t }}
           </p>
