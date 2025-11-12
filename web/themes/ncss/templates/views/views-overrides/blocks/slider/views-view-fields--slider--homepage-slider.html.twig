@@ -43,6 +43,15 @@
   {% endif %}
 {% endif %}
 <div class="swiper-slide" style="background-image: url({{ file_url(uri) }});">
+  {% if uri %}
+    <img
+      src="{{ file_url(uri) }}"
+      alt="{{ alt|e }}"
+      fetchpriority="high"
+      loading="eager"
+      style="width:1px; height:1px; position:absolute; top:0; left:0; opacity:0; pointer-events:none;"
+    >
+  {% endif %}
   <div class="container">
     <div class="hero-content mw-100" style="width: 500px;">
       <h1 class="title">
