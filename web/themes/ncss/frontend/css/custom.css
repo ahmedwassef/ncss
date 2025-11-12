@@ -2487,3 +2487,23 @@ html[dir="rtl"] .success-card .info-box ul li {
     padding: 2rem 1.5rem !important;
   }
 }
+.swiper-button-next,
+.swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px; /* Extra clickable area */
+  background: rgba(0,0,0,0.2); /* optional for visibility */
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  width: 12px;  /* keep arrow size smaller inside */
+  height: 12px;
+}
