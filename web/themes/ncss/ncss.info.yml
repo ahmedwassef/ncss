@@ -20,8 +20,7 @@ regions:
   sidebar_second: 'Sidebar second'
   footer: 'Footer'
 
-libraries:
-  - ncss/global-styling
+
 
 
 #libraries-extend:
