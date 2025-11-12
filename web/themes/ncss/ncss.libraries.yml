@@ -1,2 +1,12 @@
 global-styling:
+  css:
+  js:
+
+
+rightCSS:
+  version: VERSION
+
+  css:
+
+
 
