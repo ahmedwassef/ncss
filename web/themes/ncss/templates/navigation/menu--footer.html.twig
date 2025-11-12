@@ -29,7 +29,7 @@
         <ul class="column-list">
           {% for sub_item in item.below %}
             <li>
-              <a href="{{ sub_item.url.toString() }}">{{ sub_item.title }}</a>
+              <a href="{{ sub_item.url.toString() }}" class="text-black">{{ sub_item.title }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -40,12 +40,33 @@
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 column mb-4">
     <p class="column-title">{{ 'Follow Us'|t }}</p>
     <ul class="column-list d-flex gap-2">
-      <li class="socialmedia-icon"><a href="{{ about.social_links.facebook }}"><img src="{{ base_path ~ directory }}/frontend/img/fb.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="{{ about.social_links.twitter }}"><img src="{{ base_path ~ directory }}/frontend/img/new-twitter-rectangle.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="{{ about.social_links.instagram }}"><img src="{{ base_path ~ directory }}/frontend/img/instagram.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="{{ about.social_links.youtube }}"><img src="{{ base_path ~ directory }}/frontend/img/youtube.svg" alt=""></a></li>
-      <li class="socialmedia-icon"><a href="{{ about.social_links.linkedin }}"><img src="{{ base_path ~ directory }}/frontend/img/linkedin.svg" alt=""></a></li>
+      <li class="socialmedia-icon">
+        <a href="{{ about.social_links.facebook }}" aria-label="Follow us on Facebook">
+          <img src="{{ base_path ~ directory }}/frontend/img/fb.svg" alt="Facebook">
+        </a>
+      </li>
+      <li class="socialmedia-icon">
+        <a href="{{ about.social_links.twitter }}" aria-label="Follow us on Twitter">
+          <img src="{{ base_path ~ directory }}/frontend/img/new-twitter-rectangle.svg" alt="Twitter">
+        </a>
+      </li>
+      <li class="socialmedia-icon">
+        <a href="{{ about.social_links.instagram }}" aria-label="Follow us on Instagram">
+          <img src="{{ base_path ~ directory }}/frontend/img/instagram.svg" alt="Instagram">
+        </a>
+      </li>
+      <li class="socialmedia-icon">
+        <a href="{{ about.social_links.youtube }}" aria-label="Follow us on YouTube">
+          <img src="{{ base_path ~ directory }}/frontend/img/youtube.svg" alt="YouTube">
+        </a>
+      </li>
+      <li class="socialmedia-icon">
+        <a href="{{ about.social_links.linkedin }}" aria-label="Follow us on LinkedIn">
+          <img src="{{ base_path ~ directory }}/frontend/img/linkedin.svg" alt="LinkedIn">
+        </a>
+      </li>
     </ul>
-    <img class="img-fluid mt-4" src="{{ base_path ~ directory }}/frontend/img/vision-2030.svg" alt="vision-2030">
+    <img class="img-fluid mt-4" src="{{ base_path ~ directory }}/frontend/img/vision-2030.svg" alt="Vision 2030">
   </div>
+
 </div>
