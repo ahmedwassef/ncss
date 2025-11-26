@@ -166,7 +166,7 @@ class DisLikeForm extends FormBase {
 
     $form['footer']['info'] = [
       '#markup' => '<div><p class="mb-0 small text-muted">' .
-        $this->t('For more information, please review #rules of engagement</a> and #e-participation statement</a>.') .
+        $this->t('For more information, please review <a href="#">rules of engagement</a> and <a href="#">e-participation statement</a>.') .
         '</p></div>',
     ];
 

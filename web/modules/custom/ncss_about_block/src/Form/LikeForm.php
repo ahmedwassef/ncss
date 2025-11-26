@@ -64,19 +64,19 @@ class LikeForm extends FormBase {
     ];
 
     $form['row']['left']['title'] = [
-      '#markup' => '<h4 class="mb-1">من فضلك أخبرنا بالسبب</h4>',
+      '#markup' => '<h4 class="mb-1">' . $this->t('Please tell us the reason') . '</h4>',
     ];
 
     $form['row']['left']['subtitle'] = [
-      '#markup' => '<p class="text-muted small mb-3">(يمكنك تحديد خيارات متعددة)</p>',
+      '#markup' => '<p class="text-muted small mb-3">' . $this->t('(You can select multiple options)') . '</p>',
     ];
 
     // Checkboxes
     $checkboxes = [
-      'checkRelevant' => 'المحتوى ذو صلة',
-      'checkWellWritten' => 'لقد كانت مكتوبة بشكل جيد',
-      'checkEasyRead' => 'جعل التخطيط من السهل القراءة',
-      'checkOther' => 'شيء آخر',
+      'checkRelevant' => 'The content is relevant',
+      'checkWellWritten' => 'It was well written',
+      'checkEasyRead' => 'The layout made it easy to read',
+      'checkOther' => 'Something else',
     ];
 
     foreach ($checkboxes as $id => $label) {
@@ -101,12 +101,12 @@ class LikeForm extends FormBase {
     ];
 
     $form['row']['left']['gender_wrapper']['label'] = [
-      '#markup' => '<span class="me-3">أنا</span>',
+      '#markup' => '<span class="me-3">' . $this->t('I am') . '</span>',
     ];
 
     $form['row']['left']['gender_wrapper']['male'] = [
       '#type' => 'radio',
-      '#title' => $this->t('ذكر'),
+      '#title' => $this->t('Male'),
       '#return_value' => 'male',
       '#attributes' => [
         'class' => ['form-check-input'],
@@ -120,7 +120,7 @@ class LikeForm extends FormBase {
 
     $form['row']['left']['gender_wrapper']['female'] = [
       '#type' => 'radio',
-      '#title' => $this->t('أنثى'),
+      '#title' => $this->t('Female'),
       '#return_value' => 'female',
       '#attributes' => [
         'class' => ['form-check-input'],
@@ -140,13 +140,13 @@ class LikeForm extends FormBase {
 
     $form['row']['right']['comment'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('تعليق'),
+      '#title' => $this->t('Comment'),
       '#required' => TRUE,
       '#attributes' => [
         'class' => ['form-control'],
         'id' => 'commentTextarea',
         'rows' => 5,
-        'placeholder' => $this->t('النص المدخل'),
+        'placeholder' => $this->t('Enter your comment'),
       ],
       '#title_attributes' => ['class' => ['form-label']],
       '#prefix' => '<div class="mb-3">',
@@ -160,12 +160,12 @@ class LikeForm extends FormBase {
     ];
 
     $form['footer']['info'] = [
-      '#markup' => '<div><p class="mb-0 small text-muted">لمزيد من المعلومات يمكنك مراجعة #rules of engagement</a> و #e-participation statement</a></p></div>',
+      '#markup' => '<div><p class="mb-0 small text-muted">' . $this->t('For more information, please review <a href="#">rules of engagement</a> and <a href="#">e-participation statement</a>.') . '</p></div>',
     ];
 
     $form['footer']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('إرسال'),
+      '#value' => $this->t('Submit'),
       '#attributes' => ['class' => ['btn', 'btn-primary', 'px-4']],
     ];
 
@@ -192,7 +192,7 @@ class LikeForm extends FormBase {
 
     $this->saveFlag($route_name, 'like', $data);
 
-    $this->messenger->addStatus($this->t('شكراً لتقديمك ملاحظاتك.'));
+    $this->messenger->addStatus($this->t('Thank you for your feedback.'));
 
     \Drupal::logger('ncss_about_block')->notice('Feedback submitted: gender = @gender, reasons = @reasons, comment = @comment, route = @route', [
       '@gender' => $gender,
