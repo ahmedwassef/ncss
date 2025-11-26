@@ -49,6 +49,27 @@
     {{ page }}
     {{ page_bottom }}
 
+    <!-- Cookie Consent Modal -->
+    <div class="modal fade" id="cookieConsentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cookieConsentModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="cookieConsentModalLabel">
+              <span class="material-symbols-outlined align-middle me-2">cookie</span>
+              {{ 'Cookie Notice'|t }}
+            </h5>
+          </div>
+          <div class="modal-body">
+            <p>{{ 'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.'|t }}</p>
+            <p class="small text-muted mb-0">{{ 'You can learn more about how we use cookies by reviewing our'|t }} <a href="/privacy-policy" class="text-primary">{{ 'Privacy Policy'|t }}</a>.</p>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-outline-secondary" id="cookieDecline">{{ 'Decline'|t }}</button>
+            <button type="button" class="btn btn-primary" id="cookieAccept">{{ 'Accept All'|t }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 
@@ -58,6 +79,58 @@
       <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
               integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
               async></script>
+
+      <!-- Cookie Consent Script -->
+      <script>
+        (function() {
+          'use strict';
+
+          // Cookie utility functions
+          function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+              expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+          }
+
+          function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+          }
+
+          // Check if user has already made a choice
+          var cookieConsent = getCookie('cookie_consent');
+
+          if (!cookieConsent) {
+            // Show modal if no consent recorded
+            document.addEventListener('DOMContentLoaded', function() {
+              var cookieModal = new bootstrap.Modal(document.getElementById('cookieConsentModal'));
+              cookieModal.show();
+
+              // Handle Accept button
+              document.getElementById('cookieAccept').addEventListener('click', function() {
+                setCookie('cookie_consent', 'accepted', 365);
+                cookieModal.hide();
+              });
+
+              // Handle Decline button
+              document.getElementById('cookieDecline').addEventListener('click', function() {
+                setCookie('cookie_consent', 'declined', 365);
+                cookieModal.hide();
+              });
+            });
+          }
+        })();
+      </script>
     </js-bottom-placeholder>
 
   </body>
