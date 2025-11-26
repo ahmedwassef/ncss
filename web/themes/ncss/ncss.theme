@@ -160,6 +160,8 @@ function ncss_preprocess_node(&$variables)
 
  $node = $variables['node'];
 
+  // Get current language
+  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   // Only process advanced_page nodes
   if ($node->getType() == 'advanced_page') {
@@ -180,6 +182,12 @@ function ncss_preprocess_node(&$variables)
       $child_links = [];
       foreach ($child_ids as $child_id) {
         $child_node = \Drupal\node\Entity\Node::load($child_id);
+
+        // Load translated version if available
+        if ($child_node->hasTranslation($current_language)) {
+          $child_node = $child_node->getTranslation($current_language);
+        }
+
         $child_links[] = [
           'title' => $child_node->label(),
           'url' => $child_node->toUrl()->toString(),
@@ -191,6 +199,12 @@ function ncss_preprocess_node(&$variables)
     else {
       // This is a child node, get its parent and siblings
       $parent_node = $node->field_parent->entity;
+
+      // Load translated version of parent if available
+      if ($parent_node->hasTranslation($current_language)) {
+        $parent_node = $parent_node->getTranslation($current_language);
+      }
+
       $variables['parent_node'] = [
         'title' => $parent_node->label(),
         'url' => $parent_node->toUrl()->toString(),
@@ -208,6 +222,12 @@ function ncss_preprocess_node(&$variables)
       $sibling_links = [];
       foreach ($sibling_ids as $sibling_id) {
         $sibling_node = \Drupal\node\Entity\Node::load($sibling_id);
+
+        // Load translated version if available
+        if ($sibling_node->hasTranslation($current_language)) {
+          $sibling_node = $sibling_node->getTranslation($current_language);
+        }
+
         $sibling_links[] = [
           'title' => $sibling_node->label(),
           'url' => $sibling_node->toUrl()->toString(),
