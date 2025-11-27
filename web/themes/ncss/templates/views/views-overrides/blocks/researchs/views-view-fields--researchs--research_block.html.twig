@@ -51,9 +51,9 @@
         src="{{ uri|image_style('480_165research') }}"
 
         alt="{{ alt|e }}" loading="lazy" class="research-card-img img-fluid">
-      <b
+      <p
         class="research-card-title">    {{ fields.title.content }}
-      </b>
+      </p>
       <p class="research-card-description">  {{ fields.body.content|raw }} </p>
       <div class="research-card-tags">
         {% set colors = ['blue', 'gray', 'green', 'red'] %}

@@ -410,6 +410,10 @@ html[dir="rtl"] nav.navbar .navbar-nav .dropdown-menu .dropdown-item {
   text-align: right;
   direction: rtl;
 }
+html[dir="ltr"] nav.navbar .navbar-nav .dropdown-menu .dropdown-item {
+  text-align: left;
+  direction: ltr;
+}
 
 nav.navbar .navbar-nav .dropdown-menu {
   min-width: 250px;

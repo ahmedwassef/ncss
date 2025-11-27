@@ -18,7 +18,7 @@
         {% else %}
           <a class="btn btn-link px-2 text-dark" href="{{ lang_url }}">English</a>
         {% endif %}
-{#        <a class="btn btn-primary" href="/user/login"><img src="{{ base_path ~ directory }}/frontend/img/user.svg" class="me-2" alt="Login"> {{ 'Login'|t }}</a>#}
+        {#        <a class="btn btn-primary" href="/user/login"><img src="{{ base_path ~ directory }}/frontend/img/user.svg" class="me-2" alt="Login"> {{ 'Login'|t }}</a> #}
       </div>
     </div>
     <div class="d-flex justify-content-center align-items-center w-100">
@@ -36,9 +36,15 @@
   <div class="modal-dialog">
     <div class="modal-content bg-transparent border-0">
       <div class="modal-body">
-        <form action="#" class="w-100"><input type="text" class="form-control form-control-lg"
-                                              placeholder="{{ 'Search'|t }}"
-                                              aria-label="{{ 'Search'|t }}" autofocus aria-describedby="button-addon2">
+        <form action="/search" class="w-100">
+          <input type="text"
+                 class="form-control form-control-lg"
+                 placeholder="{{ 'Search'|t }}"
+                 aria-label="{{ 'Search'|t }}"
+                 name="query"
+                 autofocus
+                 aria-describedby="button-addon2"
+          >
         </form>
       </div>
     </div>
