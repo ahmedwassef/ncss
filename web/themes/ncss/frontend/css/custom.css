@@ -153,7 +153,7 @@
 .menu__link:hover,
 .menu__link:focus {
   background-color: #f8f9fa;
-  color: #0d6efd;
+  color: #1b8354;
   padding-left: 1.5rem;
 }
 
@@ -183,7 +183,6 @@
 
 /* Dropdown arrow indicator for RTL */
 .menu__rtl .menu__link--submenu::after {
-  content: '\2039';
   position: absolute;
   left: 1rem;
   right: auto;
@@ -196,7 +195,7 @@
 }
 
 .menu__link--submenu:hover::after {
-  color: #0d6efd;
+  color: #1b8354;
 }
 
 /* ========================================
@@ -260,7 +259,7 @@
 
 .breadcrumb-item a:hover,
 .breadcrumb-item a:focus {
-  color: #0d6efd;
+  color: #1b8354;
   text-decoration: underline;
 }
 
@@ -435,7 +434,7 @@ nav.navbar .navbar-nav .dropdown-menu {
 .navbar-nav .dropdown-item:hover,
 .navbar-nav .dropdown-item:focus {
   background-color: #f8f9fa;
-  color: #0d6efd;
+  color: #1b8354;
 }
 .sticky-bottom, .sticky-top {
   position: sticky;
@@ -835,7 +834,7 @@ html[dir="rtl"] .auth-layout .back-btn {
   min-width: 20px;
   text-align: center;
   font-size: 1.1em;
-  color: #0d6efd;
+  color: #1b8354;
   animation: countdownPulse 1s ease-in-out infinite;
 }
 
@@ -1017,13 +1016,13 @@ html[dir="rtl"] .success-card .info-box {
 /* Info messages */
 .messages--info {
   background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(13, 110, 253, 0.05) 100%);
-  border-color: #0d6efd;
+  border-color: #1b8354;
   color: #084298;
-  border-left: 5px solid #0d6efd;
+  border-left: 5px solid #1b8354;
 }
 
 .messages--info::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%230d6efd' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%231b8354' viewBox='0 0 16 16'%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/%3E%3C/svg%3E");
 }
 
 /* Style the placeholder (username/email) */
@@ -1118,7 +1117,7 @@ html[dir="rtl"] .messages--warning {
 }
 
 html[dir="rtl"] .messages--info {
-  border-right-color: #0d6efd;
+  border-right-color: #1b8354;
 }
 
 /* Responsive adjustments */
@@ -1238,9 +1237,9 @@ nav.tabs {
 
 /* Active button state */
 .local-task-btn--active {
-  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  background: linear-gradient(135deg, #1b8354 0%, #0a58ca 100%);
   color: #ffffff;
-  border-color: #0d6efd;
+  border-color: #1b8354;
   box-shadow: 0 4px 16px rgba(13, 110, 253, 0.4);
   transform: translateY(-2px);
 }
@@ -1274,7 +1273,7 @@ nav.tabs {
   transform: translateX(-50%);
   width: 60%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #0d6efd, transparent);
+  background: linear-gradient(90deg, transparent, #1b8354, transparent);
   border-radius: 2px;
   animation: indicatorPulse 2s ease-in-out infinite;
 }
@@ -1757,17 +1756,17 @@ html[dir="rtl"] .local-task-btn .badge {
 /* Info Message Styling */
 .message-alert--info {
   background: linear-gradient(135deg, rgba(13, 110, 253, 0.08) 0%, rgba(13, 110, 253, 0.03) 100%);
-  border-color: #0d6efd;
+  border-color: #1b8354;
   color: #084298;
 }
 
 .message-alert--info .message-alert__icon-wrapper {
-  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  background: linear-gradient(135deg, #1b8354 0%, #0a58ca 100%);
   color: white;
 }
 
 .message-alert--info .message-alert__divider {
-  background: #0d6efd;
+  background: #1b8354;
 }
 
 .message-alert--info .message-alert__close {
@@ -2404,7 +2403,7 @@ html[dir="rtl"] #resend-email-link:hover {
   height: 2px;
   bottom: -2px;
   left: 0;
-  background: #0d6efd;
+  background: #1b8354;
   transition: width 0.3s ease;
 }
 
