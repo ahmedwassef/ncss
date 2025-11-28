@@ -108,14 +108,14 @@
 <div class="container">
   {% if node.field_img.0.entity %}
     {% set image_uri = node.field_img.0.entity.field_media_image.0.entity.uri.value %}
-    {% set image_style = 'large' %}  {# Use any defined image style name here #}
+    {% set image_style = 'normal' %}
     {% set image_url = image_uri|image_style(image_style) %}
     {% set alt_text = node.field_img.0.alt|default(title) %}
     <div
       class="who-we-are-section-image-slider position-relative overflow-hidden"
     >
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
+        <div class="swiper-slide text-center m-4">
           <img
             class=" header-page-img"
             src="{{ image_url }}"

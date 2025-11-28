@@ -5,6 +5,7 @@ global-styling:
       # Local CSS first (critical)
       frontend/css/style.css: {}
       frontend/css/style-ar.css: { rtl: true }
+      frontend/css/custom.css: {}
 
       # Non-critical CSS (external libraries, preloaded)
       # Swiper

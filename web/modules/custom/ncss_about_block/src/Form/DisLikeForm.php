@@ -37,10 +37,16 @@ class DisLikeForm extends FormBase {
     return 'dislike_form_' . $nid;
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state,$route_parameters = NULL) {
     $form['#attributes']['class'] = ['w-100'];
     $form['#prefix'] = '<form>';
     $form['#suffix'] = '</form>';
+
+    // Store current route name
+    $form['route_name'] = [
+      '#type' => 'hidden',
+      '#value' => $route_parameters,
+    ];
 
     // Row container
     $form['row'] = [
@@ -152,11 +158,6 @@ class DisLikeForm extends FormBase {
       '#theme_wrappers' => [],
     ];
 
-    // Hidden route name
-    $form['route_name'] = [
-      '#type' => 'hidden',
-      '#value' => $this->routeMatch->getRouteName(),
-    ];
 
     // Footer
     $form['footer'] = [
@@ -166,7 +167,7 @@ class DisLikeForm extends FormBase {
 
     $form['footer']['info'] = [
       '#markup' => '<div><p class="mb-0 small text-muted">' .
-        $this->t('For more information, please review <a href="#">rules of engagement</a> and <a href="#">e-participation statement</a>.') .
+        $this->t('For more information, please review <a href="/node/60">rules of engagement</a> and <a href="/node/60">e-participation statement</a>.') .
         '</p></div>',
     ];
 
@@ -174,7 +175,6 @@ class DisLikeForm extends FormBase {
       '#type' => 'submit',
       '#value' => $this->t('Submit'),
       '#attributes' => ['class' => ['btn', 'btn-primary', 'px-4']],
-      '#theme_wrappers' => [],
     ];
 
     return $form;
@@ -192,7 +192,7 @@ class DisLikeForm extends FormBase {
       "notes" => $notes,
     ];
 
-    $this->saveFlag($route_name, 'dislike', $data);
+     $this->saveFlag($route_name, 'dislike', $data);
 
     $this->messenger->addStatus($this->t('You disliked this content.'));
   }

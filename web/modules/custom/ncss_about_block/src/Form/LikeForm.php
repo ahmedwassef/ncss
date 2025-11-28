@@ -46,10 +46,17 @@ class LikeForm extends FormBase {
 
 
 
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, $route_parameters = NULL) {
     $form['#attributes']['class'][] = 'w-100';
     $form['#prefix'] = '<form>';
     $form['#suffix'] = '</form>';
+
+
+
+    $form['route_name'] = [
+      '#type' => 'hidden',
+      '#value' => $route_parameters,
+    ];
 
     // Row container
     $form['row'] = [
@@ -160,7 +167,7 @@ class LikeForm extends FormBase {
     ];
 
     $form['footer']['info'] = [
-      '#markup' => '<div><p class="mb-0 small text-muted">' . $this->t('For more information, please review <a href="#">rules of engagement</a> and <a href="#">e-participation statement</a>.') . '</p></div>',
+      '#markup' => '<div><p class="mb-0 small text-muted">' . $this->t('For more information, please review <a href="/node/60">rules of engagement</a> and <a href="/node/60">e-participation statement</a>.') . '</p></div>',
     ];
 
     $form['footer']['submit'] = [
@@ -179,17 +186,38 @@ class LikeForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $reasons = array_filter($form_state->getValue('reasons_wrapper') ?? []);
-    $gender = $form_state->getValue(['gender_wrapper', 'gender']);
-    $comment = $form_state->getValue(['row', 'right_column', 'comment_wrapper', 'comment']);
+    // Get route name from hidden field
     $route_name = $form_state->getValue('route_name');
-
-    $data = [
-      "reasons" => $reasons,
-      "gender" => $gender,
-      "comment" => $comment,
+     // Get checkbox values
+    $checkboxes = [
+      'checkRelevant' => 'The content is relevant',
+      'checkWellWritten' => 'It was well written',
+      'checkEasyRead' => 'The layout made it easy to read',
+      'checkOther' => 'Something else',
     ];
 
+    $reasons = [];
+    foreach ($checkboxes as $key => $label) {
+      $value = $form_state->getValue(['row', 'left', $key]);
+      if (!empty($value)) {
+        $reasons[$key] = $label;
+      }
+    }
+
+    // Get gender value
+    $gender = $form_state->getValue(['row', 'left', 'gender_wrapper', 'gender']);
+
+    // Get comment value
+    $comment = $form_state->getValue(['row', 'right', 'comment']);
+
+    // Prepare data array
+    $data = [
+      'reasons' => $reasons,
+      'gender' => $gender,
+      'comment' => $comment,
+    ];
+
+    // Save the flag with correct values
     $this->saveFlag($route_name, 'like', $data);
 
     $this->messenger->addStatus($this->t('Thank you for your feedback.'));
