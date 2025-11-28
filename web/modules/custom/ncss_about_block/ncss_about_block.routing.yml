@@ -7,3 +7,18 @@ ncss_about_block.config_form:
     _permission: 'administer site configuration'
 
 
+ncss_about_block.unpublish_duplicates:
+  path: '/admin/unpublish-duplicate-news'
+  defaults:
+    _controller: '\Drupal\ncss_about_block\Controller\UnpublishDuplicatesController::unpublishDuplicates'
+    _title: 'Unpublish Duplicate News'
+  requirements:
+    _permission: 'administer nodes'
+
+ncss_about_block.update_aliases:
+  path: '/admin/update-article-aliases'
+  defaults:
+    _controller: '\Drupal\ncss_about_block\Controller\UpdateArticleAliasesController::updateArticleAliases'
+    _title: 'Update Article Aliases'
+  requirements:
+    _permission: 'administer site configuration'

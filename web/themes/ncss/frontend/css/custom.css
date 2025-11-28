@@ -568,7 +568,7 @@ html[dir="rtl"] .navbar-nav .dropdown-item::before {
 .navbar-nav .dropdown-item:hover,
 .navbar-nav .dropdown-item:focus {
   background-color: transparent;
-  color: #1b8354;
+  color: #fff;
   transform: translateX(0.5rem);
 }
 
