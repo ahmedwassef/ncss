@@ -41,6 +41,7 @@
         "drupal/video_embed_field": "^3.0@beta",
         "drupal/visitors": "^2.31",
         "drupal/webform": "^6.3@beta",
+        "drupal/webform_xlsx_export": "^1.5",
         "drupal/yoast_seo": "^1.9"
     },
     "conflict": {
