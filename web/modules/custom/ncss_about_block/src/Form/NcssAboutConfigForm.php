@@ -158,6 +158,11 @@ class NcssAboutConfigForm extends ConfigFormBase
         '#title' => $this->t('Phone'),
         '#default_value' => $config->get("$langcode.contact_info.phone") ?? '',
       ];
+      $form[$langcode]['contact_info']['fax'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Fax'),
+        '#default_value' => $config->get("$langcode.contact_info.fax") ?? '',
+      ];
       $form[$langcode]['contact_info']['address'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Address'),

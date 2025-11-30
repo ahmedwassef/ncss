@@ -1,0 +1,7 @@
+ncss_about_block.config_form:
+  title: 'About Section Settings'
+  description: 'Configure the about section content for the homepage'
+  parent: system.admin_config_system
+  route_name: ncss_about_block.config_form
+  weight: -19
+

@@ -36,7 +36,10 @@
                             <div>
                                 <p class="fw-bold mb-0">{{ 'Email'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ about.contact_info.email }}</a>
                             </div>
-                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.email }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                            <div class="position-relative">
+                                <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.email }}" style="width: 50px; height: 50px; cursor: pointer;"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                                <span class="copy-message">{{ 'Copied!'|t }}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="card rounded-3 mb-3">
@@ -44,23 +47,29 @@
                             <div>
                                 <p class="fw-bold mb-0">{{ 'Mobile Number'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ about.contact_info.phone }}</a>
                             </div>
-                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.phone }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                            <div class="position-relative">
+                                <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.phone }}" style="width: 50px; height: 50px; cursor: pointer;"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                                <span class="copy-message">{{ 'Copied!'|t }}</span>
+                            </div>
                         </div>
                     </div>
+{#                    <div class="card rounded-3 mb-3">#}
+{#                        <div class="card-body d-flex justify-content-between align-items-center">#}
+{#                            <div>#}
+{#                                <p class="fw-bold mb-0">{{ 'SMS'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ about.contact_info.phone }}</a>#}
+{#                            </div>#}
+{#                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.phone }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>#}
+{#                        </div>#}
+{#                    </div>#}
                     <div class="card rounded-3 mb-3">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="fw-bold mb-0">{{ 'SMS'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ about.contact_info.phone }}</a>
+                                <p class="fw-bold mb-0">{{ 'Fax'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ about.contact_info.fax }}</a>
                             </div>
-                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.phone }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
-                        </div>
-                    </div>
-                    <div class="card rounded-3 mb-3">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <p class="fw-bold mb-0">{{ 'Fax'|t }}</p><a href="#" class="link-underline link-underline-opacity-0">{{ about.contact_info.phone }}</a>
+                            <div class="position-relative">
+                                <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.fax }}" style="width: 50px; height: 50px; cursor: pointer;"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                                <span class="copy-message">{{ 'Copied!'|t }}</span>
                             </div>
-                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.phone }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
                         </div>
                     </div>
                     <div class="card rounded-3 mb-3">
@@ -69,7 +78,10 @@
 
                                 <p class="fw-bold mb-0">{{ 'Location'|t }}</p><a href="{{ about.contact_info.map_url }}" target="_blank" class="link-underline link-underline-opacity-0">{{ about.contact_info.address }}</a>
                             </div>
-                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.address }}" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/link-04.svg" alt="copy-01"></div>
+                            <div class="position-relative">
+                                <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="{{ about.contact_info.address }}" style="width: 50px; height: 50px; cursor: pointer;"><img src="{{ base_path ~ directory }}/frontend/img/link-04.svg" alt="copy-01"></div>
+                                <span class="copy-message">{{ 'Copied!'|t }}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="card rounded-3 mb-3">
@@ -81,7 +93,10 @@
                                   <a href="{{ about.social_links.linkedin }}" target="_blank"  class="link-underline link-underline-opacity-0"><img src="{{ base_path ~ directory }}/frontend/img/linkedin-01.svg" alt="linkedin"> </a>
                                   <a href="{{ about.social_links.twitter }}" target="_blank"  class="link-underline link-underline-opacity-0"><img src="{{ base_path ~ directory }}/frontend/img/new-twitter-rectangle.svg" alt="twitter"></a></div>
                             </div>
-                            <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="#" style="width: 50px; height: 50px"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                            <div class="position-relative">
+                                <div class="bg-primary d-flex justify-content-center align-items-center bg-opacity-10 rounded-circle copy-btn" data-copy="#" style="width: 50px; height: 50px; cursor: pointer;"><img src="{{ base_path ~ directory }}/frontend/img/copy-01.svg" alt="copy-01"></div>
+                                <span class="copy-message">{{ 'Copied!'|t }}</span>
+                            </div>
                         </div>
                     </div>
                  </div>
@@ -92,4 +107,118 @@
 
 {#   {{ dd(about.social_links) }}#}
 {#  {{ dd(about.contact_info.email) }}#}
+
+{# Copy functionality with "Copied!" message #}
+<style>
+.copy-message {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1b8354;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.copy-message::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #1b8354;
+}
+
+.copy-message.show {
+  opacity: 1;
+  visibility: visible;
+  top: -40px;
+}
+
+.position-relative {
+  position: relative;
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var copyButtons = document.querySelectorAll('.copy-btn');
+
+    copyButtons.forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        var textToCopy = this.getAttribute('data-copy');
+
+        // Skip if data-copy is empty or just "#"
+        if (!textToCopy || textToCopy === '#') {
+          return;
+        }
+
+        // Copy to clipboard
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(function() {
+            showCopyMessage(this);
+          }.bind(this)).catch(function(err) {
+            console.error('Failed to copy:', err);
+            fallbackCopyTextToClipboard(textToCopy, this);
+          }.bind(this));
+        } else {
+          // Fallback for older browsers
+          fallbackCopyTextToClipboard(textToCopy, this);
+        }
+      });
+    });
+
+    function showCopyMessage(button) {
+      var message = button.parentElement.querySelector('.copy-message');
+      if (message) {
+        message.classList.add('show');
+        setTimeout(function() {
+          message.classList.remove('show');
+        }, 2000);
+      }
+    }
+
+    function fallbackCopyTextToClipboard(text, button) {
+      var textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        var successful = document.execCommand('copy');
+        if (successful) {
+          showCopyMessage(button);
+        }
+      } catch (err) {
+        console.error('Fallback copy failed:', err);
+      }
+
+      document.body.removeChild(textArea);
+    }
+  });
+})();
+</script>
+
    {% include '@ncss/layout/footer.html.twig' %}
