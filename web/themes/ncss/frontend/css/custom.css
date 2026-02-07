@@ -3,7 +3,8 @@
   width: auto;
 }
 .theme-container img {
-   max-width: 100%;
+   max-width: 200px;
+  margin: 20px !important;
    width: 100%;
    height: auto !important;
   display: block !important;

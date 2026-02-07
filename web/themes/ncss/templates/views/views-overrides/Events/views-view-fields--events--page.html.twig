@@ -35,25 +35,14 @@
 
 {% set node = row._entity %}
 
-{% if node.field_img|length %}
-  {% set media = node.field_img.0.entity %}
-  {% set image_file = media.field_media_image.entity %}
-  {% if image_file %}
-    {% set uri = image_file.uri.value %}
-    {% set alt = media.field_media_image.alt %}
-    {#    <img src="{{ file_url(uri) }}" alt="{{ alt|e }}" loading="lazy">#}
-  {% endif %}
-{% endif %}
-
-<div class="col-12 col-sm-6 col-lg-4 mb-3">
+<div class="col-12 mb-3">
   <a href="{{ fields.view_node.content }}" class="link-underline link-underline-opacity-0">
-    <div class="single-news-card">
-      <span class="single-news-card-tag">{{ "Event"|t }}</span>
-      <img src="{{ uri|image_style('large') }}" alt="{{ alt|e }}"   loading="lazy"  class="single-news-card-img" >
-      <p class="single-news-card-title mt-3">{{ fields.title.content }}  </p>
-      <p>
-        {{ fields.field_start.content }}
-      </p>
+    <div class="event-list-item d-flex flex-column py-3 border-bottom">
+      <div class="d-flex align-items-center mb-2">
+        <span class="single-news-card-tag me-2">{{ "Event"|t }}</span>
+        <span class="text-muted">{{ fields.field_start.content }}</span>
+      </div>
+      <p class="single-news-card-title mb-2">{{ fields.title.content }}</p>
       <div class="research-card-tags">
         {% set colors = ['blue', 'gray', 'green', 'red'] %}
         {% for tag in node.field_tags %}
@@ -61,7 +50,7 @@
           <span class="tag {{ color }}">{{ tag.entity.name.value }}</span>
         {% endfor %}
       </div>
-      </div>
+    </div>
   </a>
 </div>
 

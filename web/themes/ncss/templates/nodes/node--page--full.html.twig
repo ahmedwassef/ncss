@@ -83,6 +83,7 @@
 {% set summary = node.body.summary_processed|default(null) %}
 
 
+<div class="bg-primary bg-opacity-10 mb-4 p-4">
 
 <div class="container">
   <nav id="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
@@ -93,7 +94,7 @@
   </nav>
 </div>
 
-<div class="container">
+<div class="container  ">
   <h1 class="page-heading">
     {{ title }}
   </h1>
@@ -104,7 +105,7 @@
     </p>
   {% endif %}
 </div>
-
+</div>
 <div class="container my-5">
   {% if node.field_img.0.entity %}
     {% set image_uri = node.field_img.0.entity.field_media_image.0.entity.uri.value %}
