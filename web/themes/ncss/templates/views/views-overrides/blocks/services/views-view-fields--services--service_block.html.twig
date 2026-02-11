@@ -38,7 +38,7 @@
     <div class="d-flex justify-content-between">
       <span class="service-card-icon">
         <img src="{{ base_path ~ directory }}/frontend/img/elements11.svg" class="" alt="elements11"> </span>
-      <a href="{{ fields.view_node.content }}">
+      <a href="{{ fields.field_url.content ? fields.field_url.content : fields.view_node.content }}">
         <img src="{{ base_path ~ directory }}/frontend/img/arrow-up-right-01.svg" class="rtl-horizontal-mirror"
              alt="arrow-left-02">
       </a>

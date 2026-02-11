@@ -135,15 +135,47 @@ function ncss_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_stat
     $form['actions']['#suffix'] = '</div>';
     $form['actions']['submit']['#attributes']['class'][] = 'btn btn-secondary';
   }
-   elseif($form_id=="views_exposed_form" && $form['#id'] =="views-exposed-form-blog-blog-page")
-    {
-      $form['query']['#prefix'] = '<div class="input-group"> <span class="input-group-text border-0 bg-light" id="basic-addon1"> <i class="hgi hgi-stroke hgi-search-01"></i> </span>';
-      $form['query']['#suffix'] = '</div> ';
-      $form['query']['#attributes']['class'][] = 'form-control bg-light border-0';
-      $form['query']['#placeholder']= t('Search');
-      $form['actions']['submit']['#attributes']['class'][] = 'd-none';
+   elseif ($form_id === 'views_exposed_form' && isset($form['#id']) && strpos($form['#id'], 'views-exposed-form-blog') === 0) {
+      // Blog exposed form: search input + button on one line.
+      $form['#attributes']['class'][] = 'blog-exposed-form-inline';
+      $form['actions']['#weight'] = 100;
+
+      // Find the first textfield/search field (not in actions).
+      $search_key = NULL;
+      foreach (['keys', 'query', 'title', 'keyword'] as $key) {
+        if (isset($form[$key]) && is_array($form[$key]) && isset($form[$key]['#type'])) {
+          $type = $form[$key]['#type'];
+          if (in_array($type, ['textfield', 'search'], TRUE)) {
+            $search_key = $key;
+            break;
+          }
+        }
+      }
+      if ($search_key === NULL) {
+        foreach ($form as $key => $element) {
+          if ($key[0] === '#' || $key === 'actions') {
+            continue;
+          }
+          if (is_array($element) && isset($element['#type']) && in_array($element['#type'], ['textfield', 'search'], TRUE)) {
+            $search_key = $key;
+            break;
+          }
+        }
+      }
+      if ($search_key !== NULL) {
+        $form[$search_key]['#prefix'] = '<div class="blog-search-input-wrapper">';
+        $form[$search_key]['#suffix'] = '</div>';
+        $form[$search_key]['#attributes']['class'][] = 'form-control';
+        if (empty($form[$search_key]['#placeholder'])) {
+          $form[$search_key]['#placeholder'] = t('Search');
+        }
+        $form[$search_key]['#title_display'] = 'invisible';
+      }
+
+      // Show submit button (do not hide).
+      $form['actions']['submit']['#attributes']['class'][] = 'btn btn-primary';
     }
-  elseif($form_id=="views_exposed_form" && $form['#id'] =="views-exposed-form-events-page")
+  elseif($form_id=="views_exposed_form" && isset($form['#id']) && strpos($form['#id'], 'views-exposed-form-events') === 0)
   {
     $form['query']['#prefix'] = '<div class="input-group"> <span class="input-group-text border-0 bg-light" id="basic-addon1"> <i class="hgi hgi-stroke hgi-search-01"></i> </span>';
     $form['query']['#suffix'] = '</div>';

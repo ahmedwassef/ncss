@@ -1,6 +1,6 @@
 {% block paragraph %}
   {% block content %}
-      <div class="board-member-card" data-bs-toggle="modal" data-bs-target="#modal{{ paragraph.id.value }}">
+      <div class="board-member-card" data-bs-toggle="modal"  >
         <div class="board-member-card-overlay"></div>
         {% if content.field_image %}
           {% set media_entity = content.field_image[0]['#media'] %}
@@ -21,89 +21,89 @@
         </div>
       </div>
     {% if  content.field_content_items %}
-      <div class="modal board-modal modal-xl fade" id="modal{{ paragraph.id.value }}" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-body">
-              {% if content.field_image %}
-                {% set media_entity = content.field_image[0]['#media'] %}
-                {% if media_entity.field_media_image.entity %}
-                  {% set image = media_entity.field_media_image.entity %}
-                  <img src="{{ file_url(image.uri.value) }}" alt="{{ media_entity.name.value }}" class="board-member-card-image">
-                {% endif %}
-              {% endif %}
-            </div>
-            <div class="container">
-              <section class="d-flex py-4">
-                <div style="width: 294px;" class="d-none d-md-block"></div>
-                <div>
-                  <h3 class="section-title">معالي الدكتور فهد بن عبدالمحسن السديري
-                  {{ paragraph.id.value }}
-                  </h3>
+{#      <div class="modal board-modal modal-xl fade" id="modal{{ paragraph.id.value }}" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">#}
+{#        <div class="modal-dialog">#}
+{#          <div class="modal-content">#}
+{#            <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#            <div class="modal-body">#}
+{#              {% if content.field_image %}#}
+{#                {% set media_entity = content.field_image[0]['#media'] %}#}
+{#                {% if media_entity.field_media_image.entity %}#}
+{#                  {% set image = media_entity.field_media_image.entity %}#}
+{#                  <img src="{{ file_url(image.uri.value) }}" alt="{{ media_entity.name.value }}" class="board-member-card-image">#}
+{#                {% endif %}#}
+{#              {% endif %}#}
+{#            </div>#}
+{#            <div class="container">#}
+{#              <section class="d-flex py-4">#}
+{#                <div style="width: 294px;" class="d-none d-md-block"></div>#}
+{#                <div>#}
+{#                  <h3 class="section-title">معالي الدكتور فهد بن عبدالمحسن السديري#}
+{#                  {{ paragraph.id.value }}#}
+{#                  </h3>#}
 
-                  <p class="section-description mb-4 mw-100 mt-3">رئيس مجلس الإدارة</p>
-                </div>
-              </section>
-              <div class="who-we-are-section">
-                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>
-                  <span class="who-we-are-section-title">الرؤية</span>
+{#                  <p class="section-description mb-4 mw-100 mt-3">رئيس مجلس الإدارة</p>#}
+{#                </div>#}
+{#              </section>#}
+{#              <div class="who-we-are-section">#}
+{#                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>#}
+{#                  <span class="who-we-are-section-title">الرؤية</span>#}
 
-                </div>
-                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات
-                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث
-                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في
-                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول
-                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>
-              </div>
-              <div class="who-we-are-section">
-                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>
-                  <span class="who-we-are-section-title">الرؤية</span>
+{#                </div>#}
+{#                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات#}
+{#                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث#}
+{#                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في#}
+{#                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول#}
+{#                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>#}
+{#              </div>#}
+{#              <div class="who-we-are-section">#}
+{#                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>#}
+{#                  <span class="who-we-are-section-title">الرؤية</span>#}
 
-                </div>
-                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات
-                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث
-                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في
-                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول
-                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>
-              </div>
-              <div class="who-we-are-section">
-                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>
-                  <span class="who-we-are-section-title">الرؤية</span>
+{#                </div>#}
+{#                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات#}
+{#                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث#}
+{#                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في#}
+{#                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول#}
+{#                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>#}
+{#              </div>#}
+{#              <div class="who-we-are-section">#}
+{#                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>#}
+{#                  <span class="who-we-are-section-title">الرؤية</span>#}
 
-                </div>
-                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات
-                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث
-                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في
-                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول
-                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>
-              </div>
-              <div class="who-we-are-section">
-                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>
-                  <span class="who-we-are-section-title">الرؤية</span>
+{#                </div>#}
+{#                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات#}
+{#                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث#}
+{#                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في#}
+{#                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول#}
+{#                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>#}
+{#              </div>#}
+{#              <div class="who-we-are-section">#}
+{#                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>#}
+{#                  <span class="who-we-are-section-title">الرؤية</span>#}
 
-                </div>
-                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات
-                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث
-                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في
-                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول
-                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>
-              </div>
-              <div class="who-we-are-section">
-                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>
-                  <span class="who-we-are-section-title">الرؤية</span>
+{#                </div>#}
+{#                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات#}
+{#                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث#}
+{#                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في#}
+{#                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول#}
+{#                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>#}
+{#              </div>#}
+{#              <div class="who-we-are-section">#}
+{#                <div class="d-flex align-items-center gap-2">	<span class="who-we-are-section-number">01</span>#}
+{#                  <span class="who-we-are-section-title">الرؤية</span>#}
 
-                </div>
-                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات
-                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث
-                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في
-                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول
-                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+{#                </div>#}
+{#                <p class="who-we-are-section-description">الريادة والتميز في البحوث الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات#}
+{#                  والظواهر الاجتماعية في المملكة العربية السعودية.الريادة والتميز في البحوث#}
+{#                  الاجتماعية وتقديم الحلول لأبرز القضايا والمشكلات والظواهر الاجتماعية في#}
+{#                  المملكة العربية السعودية.الريادة والتميز في البحوث الاجتماعية وتقديم الحلول#}
+{#                  لأبرز القضايا والمشكلات والظواهر الاجتماعية في المملكة العربية السعودية.</p>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
     {% endif %}
 
   {% endblock %}
