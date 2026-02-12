@@ -97,13 +97,146 @@
 
       </div>
     </nav>
-    <div class="d-flex gap-3" style="max-width: 300px;">
+    <div class="exposed-search-bar">
         {{ exposed }}
-
     </div>
-{#        <input type="text" class="form-control bg-light border-0" placeholder="البحث" aria-label="search">#}
-{#      <button class="btn btn-light" type="button"><i class="hgi hgi-stroke hgi-list-setting"></i></button>#}
   </div>
+
+  {# Same search bar design as blog: input + Search button, RTL & LTR #}
+  <style>
+    .exposed-search-bar .form-row,
+    .exposed-search-bar form.exposed-form-search-inline,
+    .exposed-search-bar form.views-exposed-form {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: stretch !important;
+      gap: 0 !important;
+      max-width: 420px;
+    }
+    .exposed-search-bar .form-row form {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: stretch !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+    .exposed-search-bar .exposed-search-input-wrapper,
+    .exposed-search-bar .blog-search-input-wrapper {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      display: flex !important;
+      align-items: stretch !important;
+    }
+    .exposed-search-bar .exposed-search-input-wrapper .form-item,
+    .exposed-search-bar .form-item {
+      flex: 1 !important;
+      margin: 0 !important;
+      min-width: 0 !important;
+      display: flex !important;
+      align-items: stretch !important;
+    }
+    .exposed-search-bar .exposed-search-input-wrapper label,
+    .exposed-search-bar .form-item label {
+      display: none !important;
+    }
+    .exposed-search-bar .exposed-search-input-wrapper input,
+    .exposed-search-bar .form-item input.form-text,
+    .exposed-search-bar .form-item input.form-search,
+    .exposed-search-bar .form-item input[type="text"] {
+      flex: 1 !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+      height: 48px !important;
+      min-height: 48px !important;
+      line-height: 1.25 !important;
+      border: 2px solid #e9ecef !important;
+      border-right: none !important;
+      border-radius: 0.5rem 0 0 0.5rem !important;
+      padding: 0 1rem !important;
+      font-size: 1rem !important;
+      vertical-align: middle !important;
+      text-align: start !important;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .exposed-search-bar .form-item input:focus,
+    .exposed-search-bar .exposed-search-input-wrapper input:focus {
+      outline: none !important;
+      border-color: #1b8354 !important;
+      box-shadow: 0 0 0 3px rgba(27, 131, 84, 0.15) !important;
+    }
+    .exposed-search-bar .form-actions {
+      margin: 0 !important;
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: stretch !important;
+    }
+    .exposed-search-bar .form-actions input[type="submit"],
+    .exposed-search-bar .form-actions button[type="submit"] {
+      box-sizing: border-box !important;
+      height: 48px !important;
+      min-height: 48px !important;
+      line-height: 1.25 !important;
+      padding: 0 1.25rem !important;
+      font-size: 1rem !important;
+      border-radius: 0 0.5rem 0.5rem 0 !important;
+      background: linear-gradient(135deg, #1b8354 0%, #146c43 100%) !important;
+      border: 2px solid #1b8354 !important;
+      color: #fff !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      vertical-align: middle !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .exposed-search-bar .form-actions input[type="submit"]:hover,
+    .exposed-search-bar .form-actions button[type="submit"]:hover {
+      box-shadow: 0 4px 12px rgba(27, 131, 84, 0.35) !important;
+      transform: translateY(-1px);
+    }
+    html[dir="rtl"] .exposed-search-bar .form-item input,
+    html[dir="rtl"] .exposed-search-bar .exposed-search-input-wrapper input {
+      border-right: 2px solid #e9ecef !important;
+      border-left: none !important;
+      border-radius: 0 0.5rem 0.5rem 0 !important;
+    }
+    html[dir="rtl"] .exposed-search-bar .form-item input:focus,
+    html[dir="rtl"] .exposed-search-bar .exposed-search-input-wrapper input:focus {
+      border-right-color: #1b8354 !important;
+      border-left: none !important;
+    }
+    html[dir="rtl"] .exposed-search-bar .form-actions input[type="submit"],
+    html[dir="rtl"] .exposed-search-bar .form-actions button[type="submit"] {
+      border-radius: 0.5rem 0 0 0.5rem !important;
+    }
+    @media (max-width: 576px) {
+      .exposed-search-bar .form-row,
+      .exposed-search-bar form.exposed-form-search-inline {
+        flex-wrap: wrap !important;
+        max-width: 100%;
+      }
+      .exposed-search-bar .form-item input,
+      .exposed-search-bar .exposed-search-input-wrapper input {
+        border-right: 2px solid #e9ecef !important;
+        border-radius: 0.5rem !important;
+        height: 48px !important;
+      }
+      html[dir="rtl"] .exposed-search-bar .form-item input,
+      html[dir="rtl"] .exposed-search-bar .exposed-search-input-wrapper input {
+        border-left: 2px solid #e9ecef !important;
+      }
+      .exposed-search-bar .form-actions input[type="submit"],
+      .exposed-search-bar .form-actions button[type="submit"] {
+        border-radius: 0.5rem !important;
+        width: 100% !important;
+        height: 48px !important;
+      }
+    }
+  </style>
+
   <div class="row">
     {% if rows -%}
       {{ rows }}
